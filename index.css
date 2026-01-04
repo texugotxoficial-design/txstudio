@@ -1,0 +1,48 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary-blue: #256af4;
+    --color-primary-green: #0df259;
+
+    /* Backgrounds */
+    --color-bg-light: #f8fafc;
+    --color-bg-dark: #0f172a;
+    /* Slightly deeper blue for better immersion */
+
+    /* Surfaces */
+    --color-surface-light: #ffffff;
+    --color-surface-dark: #1e293b;
+
+    /* Text */
+    --color-text-primary-light: #0f172a;
+    --color-text-primary-dark: #f8fafc;
+    --color-text-secondary-light: #475569;
+    /* slate-600 */
+    --color-text-secondary-dark: #cbd5e1;
+    /* slate-300 */
+
+    --font-display: "Inter", sans-serif;
+    --font-sans: "Inter", sans-serif;
+
+    --radius-default: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+}
+
+@layer base {
+    html {
+        color-scheme: light dark;
+    }
+
+    body {
+        @apply bg-bg-light text-text-primary-light antialiased transition-colors duration-300;
+    }
+
+    .dark body {
+        @apply bg-bg-dark text-text-primary-dark;
+    }
+}
+
+/* Custom dark variant support for selector strategy in v4 */
+@custom-variant dark (&:where(.dark, .dark *));

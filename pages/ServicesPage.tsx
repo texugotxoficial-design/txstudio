@@ -8,9 +8,6 @@ import ChatAssistant from '../components/ChatAssistant';
 import ScrollReveal from '../components/ScrollReveal';
 
 const ServicesPage: React.FC = () => {
-    const handleWhatsAppClick = () => {
-        window.open('https://wa.me/5516991122177', '_blank'); // Substitua pelo número real
-    };
 
     return (
         <div className="bg-bg-light dark:bg-bg-dark min-h-screen font-display text-text-primary-light dark:text-text-primary-dark antialiased transition-colors duration-300">
@@ -227,7 +224,7 @@ const ServicesPage: React.FC = () => {
                             <div className="flex flex-col items-center text-center gap-6">
                                 <h3 className="text-white text-3xl font-black">Pronto para digitalizar seu negócio?</h3>
                                 <p className="text-slate-300 max-w-md text-lg">Escolha o modelo ideal para você e entre em contato para começarmos o desenvolvimento.</p>
-                                <button onClick={handleWhatsAppClick} className="mt-2 bg-primary-blue text-white font-bold py-4 px-10 rounded-xl hover:bg-blue-600 transition-all shadow-lg shadow-primary-blue/25 hover:scale-105 active:scale-95">
+                                <button onClick={() => window.open('https://wa.me/5516991122177', '_blank')} className="mt-2 bg-primary-blue text-white font-bold py-4 px-10 rounded-xl hover:bg-blue-600 transition-all shadow-lg shadow-primary-blue/25 hover:scale-105 active:scale-95">
                                     Falar com Consultor
                                 </button>
                             </div>

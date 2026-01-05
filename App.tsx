@@ -14,6 +14,7 @@ import PlanosAppsPage from './pages/PlanosAppsPage';
 import PlanosBotsPage from './pages/PlanosBotsPage';
 import InstitutionalExamplePage from './pages/examples/InstitutionalPage';
 import CatalogExamplePage from './pages/examples/CatalogPage';
+import NotFoundPage from './pages/NotFoundPage';
 import PageTransition from './components/PageTransition';
 
 
@@ -53,6 +54,7 @@ function App() {
         <Route path="/planos-bots" element={<PageTransition><PlanosBotsPage /></PageTransition>} />
         <Route path="/exemplos/institucional" element={<PageTransition><InstitutionalExamplePage /></PageTransition>} />
         <Route path="/exemplos/catalogo" element={<PageTransition><CatalogExamplePage /></PageTransition>} />
+        <Route path="*" element={<PageTransition><NotFoundPage /></PageTransition>} />
       </Routes>
     </HashRouter>
   );

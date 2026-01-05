@@ -54,6 +54,29 @@ const RestaurantPage: React.FC = () => {
                         </ScrollReveal>
                     </div>
                 </section>
+
+                <section className="py-20 px-4 bg-slate-50 dark:bg-white/5">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl font-black mb-4">Como Funciona?</h2>
+                            <p className="text-slate-500">Simples, rápido e eficiente para o seu dia a dia.</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                            {[
+                                { step: "01", title: "Configuração", desc: "Nós configuramos seu cardápio com suas fotos e preços." },
+                                { step: "02", title: "Divulgação", desc: "Você recebe um link único e QR Codes para suas mesas." },
+                                { step: "03", title: "Pedidos", desc: "O cliente acessa, escolhe e envia o pedido pelo WhatsApp." },
+                                { step: "04", title: "Sucesso", desc: "Você recebe o pedido organizado e foca no preparo!" }
+                            ].map((item, i) => (
+                                <div key={i} className="text-center">
+                                    <div className="text-5xl font-black text-orange-500/10 mb-4">{item.step}</div>
+                                    <h4 className="font-bold mb-2">{item.title}</h4>
+                                    <p className="text-sm text-slate-500">{item.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
             </main>
             <Footer />
             <ChatAssistant />

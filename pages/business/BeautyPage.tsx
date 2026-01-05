@@ -54,6 +54,29 @@ const BeautyPage: React.FC = () => {
                         </ScrollReveal>
                     </div>
                 </section>
+
+                <section className="py-20 px-4 bg-slate-50 dark:bg-white/5">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl font-black mb-4">Transforme sua Agenda</h2>
+                            <p className="text-slate-500">Organização impecável para profissionais da beleza.</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                            {[
+                                { step: "01", title: "Vitrine", desc: "Sua marca apresentada com sofreguidão e profissionalismo." },
+                                { step: "02", title: "Serviços", desc: "Tabela clara de preços e durações para seus clientes." },
+                                { step: "03", title: "Contato", desc: "Facilidade extrema para o cliente tirar dúvidas e agendar." },
+                                { step: "04", title: "Fidelidade", desc: "Seu link fixo na bio do Instagram para acesso rápido." }
+                            ].map((item, i) => (
+                                <div key={i} className="text-center">
+                                    <div className="text-5xl font-black text-pink-500/10 mb-4">{item.step}</div>
+                                    <h4 className="font-bold mb-2">{item.title}</h4>
+                                    <p className="text-sm text-slate-500">{item.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
             </main>
             <Footer />
             <ChatAssistant />

@@ -54,6 +54,29 @@ const CommercePage: React.FC = () => {
                         </ScrollReveal>
                     </div>
                 </section>
+
+                <section className="py-20 px-4 bg-slate-50 dark:bg-white/5">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="text-center mb-16">
+                            <h2 className="text-3xl font-black mb-4">Escalabilidade para seu Varejo</h2>
+                            <p className="text-slate-500">Venda para muito mais pessoas com ferramentas modernas.</p>
+                        </div>
+                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+                            {[
+                                { step: "01", title: "Catálogo", desc: "Cadastramos seus produtos com fotos e links diretos." },
+                                { step: "02", title: "Link Bio", desc: "Um único link para todas as suas redes sociais." },
+                                { step: "03", title: "Conversão", desc: "Venda consultiva via WhatsApp para fechar mais negócios." },
+                                { step: "04", title: "Retenção", desc: "Mantenha o cliente engajado com novidades e promoções." }
+                            ].map((item, i) => (
+                                <div key={i} className="text-center">
+                                    <div className="text-5xl font-black text-primary-blue/10 mb-4">{item.step}</div>
+                                    <h4 className="font-bold mb-2">{item.title}</h4>
+                                    <p className="text-sm text-slate-500">{item.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+                </section>
             </main>
             <Footer />
             <ChatAssistant />

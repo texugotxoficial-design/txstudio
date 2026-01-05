@@ -8,6 +8,7 @@ const Navbar: React.FC = () => {
 
     const menuItems = [
         { name: 'Início', path: '/' },
+        { name: 'Planos Apps', path: '/planos-apps' },
         { name: 'Planos Bots', path: '/planos-bots' },
         { name: 'Serviços', path: '/servicos' },
         { name: 'Funcionalidades', path: '/funcionalidades' },

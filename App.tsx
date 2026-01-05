@@ -11,6 +11,7 @@ import RestaurantPage from './pages/business/RestaurantPage';
 import BeautyPage from './pages/business/BeautyPage';
 import CommercePage from './pages/business/CommercePage';
 import PlanosBotsPage from './pages/PlanosBotsPage';
+import PlanosAppsPage from './pages/PlanosAppsPage';
 import RestaurantExamplePage from './pages/examples/RestaurantExamplePage';
 import BeautyExamplePage from './pages/examples/BeautyExamplePage';
 import InstitutionalExamplePage from './pages/examples/InstitutionalPage';
@@ -52,6 +53,7 @@ function App() {
         <Route path="/negocios/estetica" element={<PageTransition><BeautyPage /></PageTransition>} />
         <Route path="/negocios/comercio" element={<PageTransition><CommercePage /></PageTransition>} />
         <Route path="/planos-bots" element={<PageTransition><PlanosBotsPage /></PageTransition>} />
+        <Route path="/planos-apps" element={<PageTransition><PlanosAppsPage /></PageTransition>} />
         <Route path="/exemplos/restaurante" element={<PageTransition><RestaurantExamplePage /></PageTransition>} />
         <Route path="/exemplos/estetica" element={<PageTransition><BeautyExamplePage /></PageTransition>} />
         <Route path="/exemplos/institucional" element={<PageTransition><InstitutionalExamplePage /></PageTransition>} />

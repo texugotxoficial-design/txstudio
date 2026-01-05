@@ -4,10 +4,18 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ChatAssistant from '../components/ChatAssistant';
-
+import LeadModal from '../components/LeadModal';
 import ScrollReveal from '../components/ScrollReveal';
 
 const HomePage: React.FC = () => {
+    const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const [selectedProject, setSelectedProject] = React.useState('');
+
+    const openModal = (project: string) => {
+        setSelectedProject(project);
+        setIsModalOpen(true);
+    };
+
     const handleWhatsAppClick = () => {
         window.open('https://wa.me/5516991122177', '_blank'); // Substitua pelo número real
     };
@@ -55,7 +63,7 @@ const HomePage: React.FC = () => {
                                     <div className="flex items-center justify-center lg:justify-start gap-6 pt-4 text-slate-500 text-sm font-medium">
                                         <div className="flex items-center gap-2">
                                             <span className="material-symbols-outlined text-[20px] text-green-500">check_circle</span>
-                                            <span>Sem taxas mensais</span>
+                                            <span>Planos que cabem no bolso</span>
                                         </div>
                                         <div className="flex items-center gap-2">
                                             <span className="material-symbols-outlined text-[20px] text-green-500">check_circle</span>
@@ -152,6 +160,80 @@ const HomePage: React.FC = () => {
                     </div>
                 </section>
 
+                {/* New Sophisticated Service Cards Section */}
+                <section className="py-24 bg-white dark:bg-[#020617] relative overflow-hidden">
+                    <div className="layout-container px-4 md:px-10 flex flex-col items-center">
+                        <ScrollReveal>
+                            <div className="text-center mb-16">
+                                <h2 className="text-primary-blue text-sm font-black tracking-[0.2em] uppercase mb-4">Escolha seu Caminho</h2>
+                                <h3 className="text-3xl md:text-5xl font-black text-text-primary-light dark:text-white mb-6">Nossas Soluções <span className="text-primary-blue">Digitais</span></h3>
+                                <p className="text-text-secondary-light dark:text-text-secondary-dark text-lg max-w-2xl mx-auto">Design premium, tecnologia de ponta e foco total na sua conversão.</p>
+                            </div>
+                        </ScrollReveal>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-6xl">
+                            {/* Institutional Card */}
+                            <ScrollReveal delay={0.1}>
+                                <div className="group relative p-8 rounded-[2rem] bg-gradient-to-b from-blue-50 to-white dark:from-blue-500/5 dark:to-transparent border border-blue-100 dark:border-blue-500/20 hover:border-blue-400 dark:hover:border-blue-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/10 h-full flex flex-col">
+                                    <div className="size-16 rounded-2xl bg-blue-500/10 flex items-center justify-center text-blue-500 mb-6 group-hover:scale-110 transition-transform duration-500">
+                                        <span className="material-symbols-outlined text-[32px]">business</span>
+                                    </div>
+                                    <h4 className="text-2xl font-black mb-2 dark:text-white">Institucional</h4>
+                                    <p className="text-text-secondary-light dark:text-text-secondary-dark text-sm mb-6 flex-grow leading-relaxed">Sua empresa digitalizada com sofisticação. Ideal para atrair novos clientes e passar credibilidade.</p>
+                                    <div className="pt-6 border-t border-blue-100 dark:border-blue-500/10">
+                                        <button
+                                            onClick={() => openModal('App Institucional')}
+                                            className="w-full py-4 rounded-xl bg-blue-500 text-white font-black hover:bg-blue-600 transition-all shadow-lg shadow-blue-500/20 flex items-center justify-center gap-2 group/btn"
+                                        >
+                                            Ver Plano
+                                            <span className="material-symbols-outlined text-[20px] group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </ScrollReveal>
+
+                            {/* Delivery Card */}
+                            <ScrollReveal delay={0.2}>
+                                <div className="group relative p-8 rounded-[2rem] bg-gradient-to-b from-orange-50 to-white dark:from-orange-500/5 dark:to-transparent border border-orange-100 dark:border-orange-500/20 hover:border-orange-400 dark:hover:border-orange-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-orange-500/10 h-full flex flex-col">
+                                    <div className="size-16 rounded-2xl bg-orange-500/10 flex items-center justify-center text-orange-500 mb-6 group-hover:scale-110 transition-transform duration-500">
+                                        <span className="material-symbols-outlined text-[32px]">restaurant</span>
+                                    </div>
+                                    <h4 className="text-2xl font-black mb-2 dark:text-white">Delivery VIP</h4>
+                                    <p className="text-text-secondary-light dark:text-text-secondary-dark text-sm mb-6 flex-grow leading-relaxed">Aumente seus pedidos com um cardápio digital que encanta e converte direto no seu WhatsApp.</p>
+                                    <div className="pt-6 border-t border-orange-100 dark:border-orange-500/10">
+                                        <button
+                                            onClick={() => openModal('App Delivery')}
+                                            className="w-full py-4 rounded-xl bg-orange-500 text-white font-black hover:bg-orange-600 transition-all shadow-lg shadow-orange-500/20 flex items-center justify-center gap-2 group/btn"
+                                        >
+                                            Ver Plano
+                                            <span className="material-symbols-outlined text-[20px] group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </ScrollReveal>
+
+                            {/* Catalog Card */}
+                            <ScrollReveal delay={0.3}>
+                                <div className="group relative p-8 rounded-[2rem] bg-gradient-to-b from-purple-50 to-white dark:from-purple-500/5 dark:to-transparent border border-purple-100 dark:border-purple-500/20 hover:border-purple-400 dark:hover:border-purple-500/50 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/10 h-full flex flex-col">
+                                    <div className="size-16 rounded-2xl bg-purple-500/10 flex items-center justify-center text-purple-500 mb-6 group-hover:scale-110 transition-transform duration-500">
+                                        <span className="material-symbols-outlined text-[32px]">shopping_bag</span>
+                                    </div>
+                                    <h4 className="text-2xl font-black mb-2 dark:text-white">Loja & Catálogo</h4>
+                                    <p className="text-text-secondary-light dark:text-text-secondary-dark text-sm mb-6 flex-grow leading-relaxed">Exiba seus produtos com qualidade e facilite orçamentos rápidos para seu time de vendas.</p>
+                                    <div className="pt-6 border-t border-purple-100 dark:border-purple-500/10">
+                                        <button
+                                            onClick={() => openModal('App Catalogo')}
+                                            className="w-full py-4 rounded-xl bg-purple-600 text-white font-black hover:bg-purple-700 transition-all shadow-lg shadow-purple-500/20 flex items-center justify-center gap-2 group/btn"
+                                        >
+                                            Ver Plano
+                                            <span className="material-symbols-outlined text-[20px] group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </ScrollReveal>
+                        </div>
+                    </div>
+                </section>
 
                 {/* Discord Bot Section - NEW SERVICE */}
                 <section className="py-20 relative overflow-hidden bg-[#5865F2]/5 dark:bg-[#5865F2]/10 border-y border-[#5865F2]/20">
@@ -229,6 +311,11 @@ const HomePage: React.FC = () => {
 
                 <Footer />
                 <ChatAssistant />
+                <LeadModal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    projectType={selectedProject}
+                />
             </div>
         </div>
     );

@@ -1,14 +1,22 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ChatAssistant from '../components/ChatAssistant';
+import LeadModal from '../components/LeadModal';
 
 import ScrollReveal from '../components/ScrollReveal';
 
 const ServicesPage: React.FC = () => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedProject, setSelectedProject] = useState('');
+
+    const openModal = (project: string) => {
+        setSelectedProject(project);
+        setIsModalOpen(true);
+    };
 
     return (
         <div className="bg-bg-light dark:bg-bg-dark min-h-screen font-display text-text-primary-light dark:text-text-primary-dark antialiased transition-colors duration-300">
@@ -84,7 +92,7 @@ const ServicesPage: React.FC = () => {
                                                 <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
                                             </Link>
                                             <button
-                                                onClick={() => window.open('https://wa.me/5516991122177?text=Olá! Gostaria de saber mais sobre o Plano Institucional.', '_blank')}
+                                                onClick={() => openModal('App Informativo e Institucional')}
                                                 className="w-full py-3 px-4 rounded-xl bg-primary-blue text-white font-bold text-sm hover:bg-blue-600 transition-all shadow-lg shadow-primary-blue/20"
                                             >
                                                 Solicitar Agora
@@ -127,7 +135,7 @@ const ServicesPage: React.FC = () => {
                                                 <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
                                             </Link>
                                             <button
-                                                onClick={() => window.open('https://wa.me/5516991122177?text=Olá! Gostaria de saber mais sobre o Plano de Alimentação.', '_blank')}
+                                                onClick={() => openModal('App para Restaurante e Delivery')}
                                                 className="w-full py-3 px-4 rounded-xl bg-primary-blue text-white font-bold text-sm hover:bg-blue-600 transition-all shadow-lg shadow-primary-blue/20"
                                             >
                                                 Solicitar Agora
@@ -170,7 +178,7 @@ const ServicesPage: React.FC = () => {
                                                 <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
                                             </Link>
                                             <button
-                                                onClick={() => window.open('https://wa.me/5516991122177?text=Olá! Gostaria de saber mais sobre o Plano de Estética.', '_blank')}
+                                                onClick={() => openModal('App para Estética e Serviços')}
                                                 className="w-full py-3 px-4 rounded-xl bg-primary-blue text-white font-bold text-sm hover:bg-blue-600 transition-all shadow-lg shadow-primary-blue/20"
                                             >
                                                 Solicitar Agora
@@ -213,7 +221,7 @@ const ServicesPage: React.FC = () => {
                                                 <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
                                             </Link>
                                             <button
-                                                onClick={() => window.open('https://wa.me/5516991122177?text=Olá! Gostaria de saber mais sobre o Plano Varejo/Catálogo.', '_blank')}
+                                                onClick={() => openModal('App Varejo e Empresas')}
                                                 className="w-full py-3 px-4 rounded-xl bg-primary-blue text-white font-bold text-sm hover:bg-blue-600 transition-all shadow-lg shadow-primary-blue/20"
                                             >
                                                 Solicitar Agora
@@ -269,7 +277,7 @@ const ServicesPage: React.FC = () => {
                             <div className="flex flex-col items-center text-center gap-6">
                                 <h3 className="text-white text-3xl font-black">Pronto para digitalizar seu negócio?</h3>
                                 <p className="text-slate-300 max-w-md text-lg">Escolha o modelo ideal para você e entre em contato para começarmos o desenvolvimento.</p>
-                                <button onClick={() => window.open('https://wa.me/5516991122177', '_blank')} className="mt-2 bg-primary-blue text-white font-bold py-4 px-10 rounded-xl hover:bg-blue-600 transition-all shadow-lg shadow-primary-blue/25 hover:scale-105 active:scale-95">
+                                <button onClick={() => openModal('Consulta Geral')} className="mt-2 bg-primary-blue text-white font-bold py-4 px-10 rounded-xl hover:bg-blue-600 transition-all shadow-lg shadow-primary-blue/25 hover:scale-105 active:scale-95">
                                     Falar com Consultor
                                 </button>
                             </div>
@@ -279,6 +287,11 @@ const ServicesPage: React.FC = () => {
 
                 <Footer />
                 <ChatAssistant />
+                <LeadModal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    projectType={selectedProject}
+                />
             </div>
         </div>
     );

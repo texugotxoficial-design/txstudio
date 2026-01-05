@@ -1,13 +1,18 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ChatAssistant from '../components/ChatAssistant';
 import ScrollReveal from '../components/ScrollReveal';
+import LeadModal from '../components/LeadModal';
 
 const PlanosBotsPage: React.FC = () => {
-    const handleWhatsAppClick = (plan: string) => {
-        window.open(`https://wa.me/5516991122177?text=Olá! Tenho interesse no plano ${plan} para Bots de Discord.`, '_blank');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedProject, setSelectedProject] = useState('');
+
+    const openModal = (plan: string) => {
+        setSelectedProject(`Plano Discord: ${plan}`);
+        setIsModalOpen(true);
     };
 
     const discordPlans = [
@@ -82,7 +87,7 @@ const PlanosBotsPage: React.FC = () => {
                                     ))}
                                 </ul>
                                 <button
-                                    onClick={() => handleWhatsAppClick(plan.name)}
+                                    onClick={() => openModal(plan.name)}
                                     className={`w-full py-4 rounded-xl font-black transition-all ${plan.popular ? 'bg-[#5865F2] text-white shadow-lg hover:bg-[#4752C4]' : 'bg-black/5 dark:bg-white/10 text-[#5865F2] dark:text-white'}`}
                                 >
                                     Contratar para Discord
@@ -94,6 +99,11 @@ const PlanosBotsPage: React.FC = () => {
             </main>
             <Footer />
             <ChatAssistant />
+            <LeadModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                projectType={selectedProject}
+            />
         </div>
     );
 };

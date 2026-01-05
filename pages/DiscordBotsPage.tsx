@@ -1,19 +1,24 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ChatAssistant from '../components/ChatAssistant';
+import LeadModal from '../components/LeadModal';
 
 import ScrollReveal from '../components/ScrollReveal';
 
 const DiscordBotsPage: React.FC = () => {
-    const handleWhatsAppClick = () => {
-        window.open('https://wa.me/5516991122177', '_blank');
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedProject, setSelectedProject] = useState('');
+
+    const openModal = (project: string) => {
+        setSelectedProject(project);
+        setIsModalOpen(true);
     };
 
     const handleDiscordContactClick = () => {
-        window.open('https://discord.com/users/1220053002337910877', '_blank');
+        openModal('Consultoria Discord Bot');
     };
 
     const handleLanHouseClick = () => {
@@ -174,7 +179,7 @@ const DiscordBotsPage: React.FC = () => {
                                             ))}
                                         </div>
                                         <button
-                                            onClick={handleDiscordContactClick}
+                                            onClick={() => openModal('Bot Discord: Iniciante')}
                                             className="w-full py-4 rounded-xl border border-black/10 dark:border-white/10 text-text-primary-light dark:text-white font-bold hover:bg-black/5 dark:hover:bg-white/5 transition-all"
                                         >
                                             Começar Agora
@@ -208,7 +213,7 @@ const DiscordBotsPage: React.FC = () => {
                                             ))}
                                         </div>
                                         <button
-                                            onClick={handleDiscordContactClick}
+                                            onClick={() => openModal('Bot Discord: Comunidade Pro')}
                                             className="w-full py-4 rounded-xl bg-[#5865F2] text-white font-black hover:bg-[#4752C4] transition-all shadow-lg shadow-[#5865F2]/30"
                                         >
                                             Contratar Pro
@@ -240,7 +245,7 @@ const DiscordBotsPage: React.FC = () => {
                                             ))}
                                         </div>
                                         <button
-                                            onClick={handleDiscordContactClick}
+                                            onClick={() => openModal('Bot Discord: Enterprise')}
                                             className="w-full py-4 rounded-xl border border-black/10 dark:border-white/10 text-text-primary-light dark:text-white font-bold hover:bg-black/5 dark:hover:bg-white/5 transition-all"
                                         >
                                             Falar com Vendas
@@ -317,6 +322,11 @@ const DiscordBotsPage: React.FC = () => {
 
                 <Footer />
                 <ChatAssistant />
+                <LeadModal
+                    isOpen={isModalOpen}
+                    onClose={() => setIsModalOpen(false)}
+                    projectType={selectedProject}
+                />
             </div>
         </div>
     );

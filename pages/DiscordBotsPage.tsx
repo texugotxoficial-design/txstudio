@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ChatAssistant from '../components/ChatAssistant';
@@ -53,12 +54,12 @@ const DiscordBotsPage: React.FC = () => {
                                             >
                                                 Falar com Especialista
                                             </button>
-                                            <a
-                                                href="#planos"
+                                            <Link
+                                                to="/planos-bots"
                                                 className="bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold py-4 px-8 rounded-xl transition-all backdrop-blur-sm"
                                             >
                                                 Ver Planos
-                                            </a>
+                                            </Link>
                                         </div>
                                     </ScrollReveal>
                                 </div>

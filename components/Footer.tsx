@@ -25,10 +25,8 @@ const Footer: React.FC = () => {
                             <div className="flex flex-col gap-4">
                                 <h4 className="text-white font-bold">Empresa</h4>
                                 <div className="flex flex-col gap-2 text-sm">
-                                    <Link className="text-text-secondary-dark hover:text-primary-blue transition-colors" to="/">Início</Link>
-                                    <Link className="text-text-secondary-dark hover:text-primary-blue transition-colors" to="/planos-apps">Planos Apps</Link>
-                                    <Link className="text-text-secondary-dark hover:text-primary-blue transition-colors" to="/planos-bots">Planos Bots</Link>
-                                    <Link className="text-text-secondary-dark hover:text-primary-blue transition-colors" to="/servicos">Serviços</Link>
+                                    <li><Link to="/planos-bots" className="text-slate-400 hover:text-primary-blue text-sm transition-colors">Planos Bots</Link></li>
+                                    <li><Link to="/servicos" className="text-slate-400 hover:text-primary-blue text-sm transition-colors">Serviços</Link></li>
                                     <Link className="text-text-secondary-dark hover:text-primary-blue transition-colors" to="/sobre">Sobre nós</Link>
                                 </div>
                             </div>

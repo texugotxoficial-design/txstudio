@@ -75,6 +75,21 @@ const ServicesPage: React.FC = () => {
                                                 <span>Links diretos para Redes Sociais</span>
                                             </li>
                                         </ul>
+                                        <div className="mt-auto pt-6 flex flex-col gap-3">
+                                            <Link
+                                                to="/exemplos/institucional"
+                                                className="w-full py-3 px-4 rounded-xl border border-primary-blue/30 text-primary-split-blue font-bold text-sm text-center hover:bg-primary-blue/5 transition-all flex items-center justify-center gap-2 group/btn"
+                                            >
+                                                Ver Exemplo
+                                                <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                                            </Link>
+                                            <button
+                                                onClick={() => window.open('https://wa.me/5516991122177?text=Olá! Gostaria de saber mais sobre o Plano Institucional.', '_blank')}
+                                                className="w-full py-3 px-4 rounded-xl bg-primary-blue text-white font-bold text-sm hover:bg-blue-600 transition-all shadow-lg shadow-primary-blue/20"
+                                            >
+                                                Solicitar Agora
+                                            </button>
+                                        </div>
                                     </div>
                                 </ScrollReveal>
                                 {/* Card 2: Restaurantes */}
@@ -103,6 +118,21 @@ const ServicesPage: React.FC = () => {
                                                 <span>Galeria de Fotos dos Pratos</span>
                                             </li>
                                         </ul>
+                                        <div className="mt-auto pt-6 flex flex-col gap-3">
+                                            <Link
+                                                to="/exemplos/restaurante"
+                                                className="w-full py-3 px-4 rounded-xl border border-primary-blue/30 text-primary-split-blue font-bold text-sm text-center hover:bg-primary-blue/5 transition-all flex items-center justify-center gap-2 group/btn"
+                                            >
+                                                Ver Exemplo
+                                                <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                                            </Link>
+                                            <button
+                                                onClick={() => window.open('https://wa.me/5516991122177?text=Olá! Gostaria de saber mais sobre o Plano de Alimentação.', '_blank')}
+                                                className="w-full py-3 px-4 rounded-xl bg-primary-blue text-white font-bold text-sm hover:bg-blue-600 transition-all shadow-lg shadow-primary-blue/20"
+                                            >
+                                                Solicitar Agora
+                                            </button>
+                                        </div>
                                     </div>
                                 </ScrollReveal>
                                 {/* Card 3: Estética */}
@@ -131,6 +161,21 @@ const ServicesPage: React.FC = () => {
                                                 <span>Botão de Agendamento Rápido</span>
                                             </li>
                                         </ul>
+                                        <div className="mt-auto pt-6 flex flex-col gap-3">
+                                            <Link
+                                                to="/exemplos/estetica"
+                                                className="w-full py-3 px-4 rounded-xl border border-primary-blue/30 text-primary-split-blue font-bold text-sm text-center hover:bg-primary-blue/5 transition-all flex items-center justify-center gap-2 group/btn"
+                                            >
+                                                Ver Exemplo
+                                                <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                                            </Link>
+                                            <button
+                                                onClick={() => window.open('https://wa.me/5516991122177?text=Olá! Gostaria de saber mais sobre o Plano de Estética.', '_blank')}
+                                                className="w-full py-3 px-4 rounded-xl bg-primary-blue text-white font-bold text-sm hover:bg-blue-600 transition-all shadow-lg shadow-primary-blue/20"
+                                            >
+                                                Solicitar Agora
+                                            </button>
+                                        </div>
                                     </div>
                                 </ScrollReveal>
                                 {/* Card 4: Empresas em Geral */}
@@ -159,6 +204,21 @@ const ServicesPage: React.FC = () => {
                                                 <span>Link direto para WhatsApp Comercial</span>
                                             </li>
                                         </ul>
+                                        <div className="mt-auto pt-6 flex flex-col gap-3">
+                                            <Link
+                                                to="/exemplos/catalogo"
+                                                className="w-full py-3 px-4 rounded-xl border border-primary-blue/30 text-primary-split-blue font-bold text-sm text-center hover:bg-primary-blue/5 transition-all flex items-center justify-center gap-2 group/btn"
+                                            >
+                                                Ver Exemplo
+                                                <span className="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                                            </Link>
+                                            <button
+                                                onClick={() => window.open('https://wa.me/5516991122177?text=Olá! Gostaria de saber mais sobre o Plano Varejo/Catálogo.', '_blank')}
+                                                className="w-full py-3 px-4 rounded-xl bg-primary-blue text-white font-bold text-sm hover:bg-blue-600 transition-all shadow-lg shadow-primary-blue/20"
+                                            >
+                                                Solicitar Agora
+                                            </button>
+                                        </div>
                                     </div>
                                 </ScrollReveal>
                             </div>

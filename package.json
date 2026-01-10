@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "shx cp template.html index.html && vite",
-    "build": "shx cp template.html index.html && vite build && shx cp dist/index.html index.html && shx cp dist/index.html 404.html && shx cp -r dist/assets . && shx cp -r dist/showcase .",
+    "build": "shx cp template.html index.html && vite build && shx cp -rf dist/* . && shx cp dist/index.html 404.html",
     "preview": "vite preview",
     "start": "node server.js",
     "postinstall": "npm run build"

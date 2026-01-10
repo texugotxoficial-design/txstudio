@@ -102,10 +102,14 @@ const HomePage: React.FC = () => {
                         <div className="w-full relative">
                             <ScrollReveal direction="up" duration={1} delay={0.2}>
                                 <div className="relative h-[720px] flex items-center">
+                                    {/* Ambient Glows */}
+                                    <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 ambient-glow rounded-full"></div>
+                                    <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 ambient-glow rounded-full"></div>
+
                                     <motion.div
                                         drag="x"
                                         dragConstraints={{ right: 0, left: -2200 }}
-                                        className="flex gap-12 cursor-grab active:cursor-grabbing p-12"
+                                        className="flex gap-12 cursor-grab active:cursor-grabbing p-12 relative z-10"
                                     >
                                         {[
                                             { img: '/showcase/fintech.png', title: 'Fintech Hub', tag: 'Finance' },
@@ -117,7 +121,7 @@ const HomePage: React.FC = () => {
                                             <motion.div
                                                 key={i}
                                                 whileHover={{ scale: 1.05, y: -30, rotateY: 5 }}
-                                                className="min-w-[550px] h-[650px] glass-effect-dark rounded-[4rem] border border-white/10 overflow-hidden relative group shadow-2xl shadow-black/80 transition-all duration-700"
+                                                className="min-w-[550px] h-[650px] premium-glass rounded-[4rem] border border-white/10 overflow-hidden relative group shadow-2xl shadow-black/80 transition-all duration-700 animate-shimmer"
                                                 style={{ perspective: '1200px' }}
                                             >
                                                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-bg-dark/95 z-10"></div>
@@ -125,6 +129,12 @@ const HomePage: React.FC = () => {
                                                     src={item.img}
                                                     alt={item.title}
                                                     className="w-full h-full object-cover transition-transform duration-[3000ms] group-hover:scale-125"
+                                                    onError={(e) => {
+                                                        const target = e.target as HTMLImageElement;
+                                                        if (!target.src.includes('raw.githubusercontent.com')) {
+                                                            target.src = `https://raw.githubusercontent.com/texugotxoficial-design/LocalPro/main/public${item.img}`;
+                                                        }
+                                                    }}
                                                 />
 
                                                 {/* Card Content */}

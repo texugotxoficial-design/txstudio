@@ -13,7 +13,17 @@ const Footer: React.FC = () => {
                     <div className="lg:col-span-2 space-y-6">
                         <Link to="/" className="flex items-center gap-3 group">
                             <div className="flex items-center justify-center size-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 text-primary border border-white/10 overflow-hidden group-hover:scale-105 transition-transform duration-500">
-                                <img src="/logo_tx.jpg" alt="Logo TX" className="w-full h-full object-cover opacity-80" />
+                                <img
+                                    src="/logo_tx.jpg"
+                                    alt="Logo TX"
+                                    className="w-full h-full object-cover opacity-80"
+                                    onError={(e) => {
+                                        const target = e.target as HTMLImageElement;
+                                        if (!target.src.includes('raw.githubusercontent.com')) {
+                                            target.src = "https://raw.githubusercontent.com/texugotxoficial-design/LocalPro/main/public/logo_tx.jpg";
+                                        }
+                                    }}
+                                />
                             </div>
                             <div className="flex flex-col">
                                 <h2 className="text-white text-2xl font-black tracking-tighter uppercase italic">TX<span className="text-primary tracking-normal not-italic"> Digital Studio</span></h2>

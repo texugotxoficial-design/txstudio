@@ -39,6 +39,14 @@
     .glass-effect-dark {
         @apply bg-black/40 backdrop-blur-xl border border-white/10 relative overflow-hidden;
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.4));
+        box-shadow: 0 8px 32px 0 rgba(138, 43, 226, 0.2);
+    }
+
+    .premium-glass {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
     }
 
     .glass-effect-dark::after {

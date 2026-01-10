@@ -43,7 +43,17 @@ const Navbar: React.FC = () => {
                     {/* Logo */}
                     <Link to="/" className="flex items-center gap-3 group">
                         <div className="flex items-center justify-center size-12 rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg shadow-primary/30 group-hover:rotate-6 transition-transform overflow-hidden border border-white/20">
-                            <img src="/logo_tx.jpg" alt="Logo TX" className="w-full h-full object-cover" />
+                            <img
+                                src="/logo_tx.jpg"
+                                alt="Logo TX"
+                                className="w-full h-full object-cover"
+                                onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    if (!target.src.includes('raw.githubusercontent.com')) {
+                                        target.src = "https://raw.githubusercontent.com/texugotxoficial-design/LocalPro/main/public/logo_tx.jpg";
+                                    }
+                                }}
+                            />
                         </div>
                         <div className="flex flex-col leading-tight">
                             <h2 className="text-white text-xl font-black tracking-tighter uppercase italic">TX<span className="text-primary not-italic"> STUDIO</span></h2>

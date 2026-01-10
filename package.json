@@ -2,11 +2,10 @@
   "name": "tx-digital-studio",
   "private": true,
   "version": "1.0.0",
-  "type": "module",
   "main": "server.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && shx cp -r dist/* . && shx cp dist/index.html 404.html",
     "preview": "vite preview",
     "start": "node server.js",
     "postinstall": "npm run build"
@@ -24,6 +23,7 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-router-dom": "^7.11.0",
+    "shx": "^0.4.0",
     "tailwindcss": "^4.1.18",
     "typescript": "~5.8.2",
     "vite": "^6.2.0"

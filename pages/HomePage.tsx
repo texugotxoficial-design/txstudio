@@ -99,78 +99,50 @@ const HomePage: React.FC = () => {
                             </div>
                         </ScrollReveal>
 
-                        <div className="w-full relative">
+                        <div className="w-full relative mt-16 px-4">
                             <ScrollReveal direction="up" duration={1} delay={0.2}>
-                                <div className="relative h-[720px] flex items-center">
-                                    {/* Ambient Glows */}
-                                    <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-primary/20 ambient-glow rounded-full"></div>
-                                    <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-accent/10 ambient-glow rounded-full"></div>
+                                {/* Simplified Grid for better mobile performance */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
+                                    {[
+                                        { img: '/showcase/fintech.png', title: 'Fintech Hub', tag: 'Finance' },
+                                        { img: '/showcase/saas.png', title: 'Nexus SaaS', tag: 'Productivity' },
+                                        { img: '/showcase/luxury.png', title: 'Aura Luxury', tag: 'E-commerce' },
+                                        { img: '/showcase/dash.png', title: 'Vision AI', tag: 'Intelligence' },
+                                        { img: '/showcase/creative.png', title: 'Studio Portfolio', tag: 'Creative' }
+                                    ].map((item, i) => (
+                                        <motion.div
+                                            key={i}
+                                            initial={{ opacity: 0, y: 30 }}
+                                            whileInView={{ opacity: 1, y: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{ delay: i * 0.1, duration: 0.8 }}
+                                            className={`relative aspect-[4/5] rounded-[2.5rem] overflow-hidden group border border-white/10 premium-glass ${i === 3 || i === 4 ? 'md:hidden lg:block' : ''}`}
+                                        >
+                                            {/* Static overlay instead of heavy filter */}
+                                            <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/20 to-bg-dark/95 z-10 transition-colors duration-500 group-hover:via-black/40"></div>
 
-                                    <motion.div
-                                        drag="x"
-                                        dragConstraints={{ right: 0, left: -2200 }}
-                                        className="flex gap-12 cursor-grab active:cursor-grabbing p-12 relative z-10"
-                                    >
-                                        {[
-                                            { img: '/showcase/fintech.png', title: 'Fintech Hub', tag: 'Finance' },
-                                            { img: '/showcase/saas.png', title: 'Nexus SaaS', tag: 'Productivity' },
-                                            { img: '/showcase/luxury.png', title: 'Aura Luxury', tag: 'E-commerce' },
-                                            { img: '/showcase/dash.png', title: 'Vision AI', tag: 'Intelligence' },
-                                            { img: '/showcase/creative.png', title: 'Studio Portfolio', tag: 'Creative' }
-                                        ].map((item, i) => (
-                                            <motion.div
-                                                key={i}
-                                                whileHover={{ scale: 1.05, y: -30, rotateY: 5 }}
-                                                className="min-w-[550px] h-[650px] premium-glass rounded-[4rem] border border-white/10 overflow-hidden relative group shadow-2xl shadow-black/80 transition-all duration-700 animate-shimmer"
-                                                style={{ perspective: '1200px' }}
-                                            >
-                                                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-bg-dark/95 z-10"></div>
-                                                <img
-                                                    src={`https://raw.githubusercontent.com/texugotxoficial-design/txdigitalstudio/main/public-assets${item.img}`}
-                                                    alt={item.title}
-                                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-                                                />
+                                            <img
+                                                src={`https://raw.githubusercontent.com/texugotxoficial-design/txdigitalstudio/main/public-assets${item.img}`}
+                                                alt={item.title}
+                                                loading="lazy"
+                                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                                            />
 
-                                                {/* Card Content */}
-                                                <div className="absolute bottom-12 left-12 z-20">
-                                                    <motion.div
-                                                        initial={{ opacity: 0, x: -20 }}
-                                                        whileInView={{ opacity: 1, x: 0 }}
-                                                        className="px-6 py-2 rounded-full bg-primary/20 border border-primary/30 text-[11px] font-black tracking-[0.4em] text-white uppercase mb-5 inline-block backdrop-blur-md"
-                                                    >
-                                                        {item.tag}
-                                                    </motion.div>
-                                                    <h4 className="text-4xl font-black text-white italic tracking-tighter uppercase mb-3">
-                                                        {item.title}
-                                                    </h4>
-                                                    <div className="h-2 w-20 bg-accent rounded-full transition-all duration-700 group-hover:w-40 group-hover:bg-primary"></div>
+                                            {/* Card Content */}
+                                            <div className="absolute bottom-10 left-10 right-10 z-20">
+                                                <div className="px-5 py-1.5 rounded-full bg-primary/20 border border-primary/30 text-[10px] font-black tracking-[0.3em] text-white uppercase mb-4 inline-block backdrop-blur-md">
+                                                    {item.tag}
                                                 </div>
-
-                                                {/* Lighting Effect Overlay */}
-                                                <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 pointer-events-none"></div>
-                                            </motion.div>
-                                        ))}
-                                    </motion.div>
-                                </div>
-
-                                {/* Interaction Guide */}
-                                <div className="flex flex-col items-center gap-8 mt-12">
-                                    <div className="flex gap-2.5">
-                                        {[1, 2, 3, 4, 5].map(i => (
-                                            <div key={i} className="h-1.5 w-12 rounded-full bg-white/5 overflow-hidden border border-white/5 shadow-inner">
-                                                <motion.div
-                                                    animate={{ x: [-48, 48] }}
-                                                    transition={{ duration: 3, repeat: Infinity, delay: i * 0.3, ease: "easeInOut" }}
-                                                    className="h-full w-full bg-gradient-to-r from-primary via-accent to-primary"
-                                                />
+                                                <h4 className="text-3xl font-black text-white italic tracking-tighter uppercase mb-2">
+                                                    {item.title}
+                                                </h4>
+                                                <div className="h-1.5 w-16 bg-accent rounded-full transition-all duration-500 group-hover:w-full group-hover:bg-primary"></div>
                                             </div>
-                                        ))}
-                                    </div>
-                                    <span className="text-[12px] font-black tracking-[0.5em] uppercase text-slate-500 flex items-center gap-4 animate-bounce">
-                                        <span className="material-symbols-outlined text-xl">swipe_left</span>
-                                        DESLIZE PARA A EXCELÊNCIA
-                                        <span className="material-symbols-outlined text-xl">swipe_right</span>
-                                    </span>
+
+                                            {/* Subtle Lighting Effect */}
+                                            <div className="absolute inset-0 bg-gradient-to-tr from-white/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                                        </motion.div>
+                                    ))}
                                 </div>
                             </ScrollReveal>
                         </div>

@@ -1,9 +1,9 @@
-
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import ChatAssistant from '../../components/ChatAssistant';
 import ScrollReveal from '../../components/ScrollReveal';
+import ReflectiveButton from '../../components/ReflectiveButton';
 
 const RestaurantPage: React.FC = () => {
     const handleWhatsAppClick = () => {
@@ -11,70 +11,100 @@ const RestaurantPage: React.FC = () => {
     };
 
     return (
-        <div className="bg-bg-light dark:bg-bg-dark min-h-screen font-display text-text-primary-light dark:text-text-primary-dark transition-colors duration-300">
+        <div className="bg-bg-dark min-h-screen text-white transition-colors duration-300">
             <Navbar />
-            <main>
-                <section className="py-20 bg-[#020617] relative overflow-hidden text-white">
-                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-600/20 rounded-full blur-[120px]"></div>
-                    <div className="layout-container px-4 text-center relative z-10">
-                        <ScrollReveal>
-                            <h1 className="text-4xl md:text-6xl font-black mb-6">Seu Restaurante na <span className="text-orange-500">Palma da Mão</span></h1>
-                            <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-10">
-                                Cardápios digitais interativos, integração com WhatsApp e visibilidade total para o seu negócio de alimentação.
-                            </p>
-                            <button onClick={handleWhatsAppClick} className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 px-10 rounded-xl transition-all shadow-lg shadow-orange-500/20">
-                                Solicitar Orçamento
-                            </button>
-                        </ScrollReveal>
-                    </div>
-                </section>
+            <main className="pt-32 pb-20">
+                {/* Hero section */}
+                <section className="px-6 mb-32 relative">
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-                <section className="py-20 px-4">
-                    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <ScrollReveal delay={0.1}>
-                            <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 shadow-sm">
-                                <span className="material-symbols-outlined text-4xl text-orange-500 mb-4">restaurant_menu</span>
-                                <h3 className="text-xl font-bold mb-3">Cardápio Interativo</h3>
-                                <p className="text-slate-500 dark:text-slate-400">Fotos reais, descrições detalhadas e preços sempre atualizados.</p>
-                            </div>
-                        </ScrollReveal>
-                        <ScrollReveal delay={0.2}>
-                            <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 shadow-sm">
-                                <span className="material-symbols-outlined text-4xl text-orange-500 mb-4">send</span>
-                                <h3 className="text-xl font-bold mb-3">Pedidos no WhatsApp</h3>
-                                <p className="text-slate-500 dark:text-slate-400">Receba pedidos organizados diretamente no seu chat, sem taxas de marketplace.</p>
-                            </div>
-                        </ScrollReveal>
-                        <ScrollReveal delay={0.3}>
-                            <div className="p-8 rounded-2xl bg-white dark:bg-white/5 border border-black/5 dark:border-white/10 shadow-sm">
-                                <span className="material-symbols-outlined text-4xl text-orange-500 mb-4">location_on</span>
-                                <h3 className="text-xl font-bold mb-3">Localização GPS</h3>
-                                <p className="text-slate-500 dark:text-slate-400">Facilite a chegada do seu cliente com integração ao Google Maps e Waze.</p>
-                            </div>
-                        </ScrollReveal>
-                    </div>
-                </section>
-
-                <section className="py-20 px-4 bg-slate-50 dark:bg-white/5">
-                    <div className="max-w-7xl mx-auto">
-                        <div className="text-center mb-16">
-                            <h2 className="text-3xl font-black mb-4">Como Funciona?</h2>
-                            <p className="text-slate-500">Simples, rápido e eficiente para o seu dia a dia.</p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                            {[
-                                { step: "01", title: "Configuração", desc: "Nós configuramos seu cardápio com suas fotos e preços." },
-                                { step: "02", title: "Divulgação", desc: "Você recebe um link único e QR Codes para suas mesas." },
-                                { step: "03", title: "Pedidos", desc: "O cliente acessa, escolhe e envia o pedido pelo WhatsApp." },
-                                { step: "04", title: "Sucesso", desc: "Você recebe o pedido organizado e foca no preparo!" }
-                            ].map((item, i) => (
-                                <div key={i} className="text-center">
-                                    <div className="text-5xl font-black text-orange-500/10 mb-4">{item.step}</div>
-                                    <h4 className="font-bold mb-2">{item.title}</h4>
-                                    <p className="text-sm text-slate-500">{item.desc}</p>
+                    <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 relative z-10">
+                        <div className="flex-1 text-center lg:text-left">
+                            <ScrollReveal direction="right">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-8 mx-auto lg:mx-0">
+                                    <span className="size-2 rounded-full bg-accent animate-pulse"></span>
+                                    <span className="text-accent text-[10px] font-black uppercase tracking-[0.2em]">Gastronomia Digital TX</span>
                                 </div>
-                            ))}
+                                <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tighter uppercase">
+                                    VUE DO SEU <br /> <span className="text-gradient">PRÓPRIO</span> CARDÁPIO.
+                                </h1>
+                                <p className="text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0 mb-12 font-medium leading-relaxed italic">
+                                    "Apresentamos a solução definitiva para alta gastronomia. Cardápios interativos que não apenas informam, mas despertam o desejo imediato de consumo."
+                                </p>
+                                <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+                                    <ReflectiveButton
+                                        size="lg"
+                                        onClick={handleWhatsAppClick}
+                                    >
+                                        REDEFINIR MEU RESTAURANTE
+                                    </ReflectiveButton>
+                                </div>
+                            </ScrollReveal>
                         </div>
+
+                        <div className="flex-1 w-full max-w-[500px]">
+                            <ScrollReveal direction="left" delay={0.2}>
+                                <div className="relative group">
+                                    <div className="absolute -inset-1 bg-gradient-to-r from-accent to-primary rounded-[3rem] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+                                    <div className="relative aspect-square rounded-[3rem] bg-[#0B0E14] border border-white/5 overflow-hidden shadow-2xl">
+                                        <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&q=80')] bg-cover bg-center mix-blend-overlay opacity-50"></div>
+                                        <div className="absolute inset-0 bg-gradient-to-t from-[#0B0E14] via-transparent to-transparent"></div>
+                                        <div className="absolute bottom-8 left-8 right-8">
+                                            <div className="glass-effect-dark border-white/10 p-6 rounded-2xl">
+                                                <div className="flex items-center gap-4 mb-3 text-accent">
+                                                    <span className="material-symbols-outlined">restaurant_menu</span>
+                                                    <span className="text-[10px] font-black uppercase tracking-widest text-white">Menu Interativo v2.0</span>
+                                                </div>
+                                                <p className="text-xs text-slate-300 italic font-medium">"Reduzimos o tempo de pedido em até 40% com nossa interface express."</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ScrollReveal>
+                        </div>
+                    </div>
+                </section>
+
+                {/* Features Section */}
+                <section className="px-6 mb-32">
+                    <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                        {[
+                            { icon: 'lunch_dining', title: 'Vitrine Gourmet', desc: 'Fotos em alta definição que valorizam a estética dos seus pratos.' },
+                            { icon: 'shopping_cart_checkout', title: 'WhatsApp Direct', desc: 'Pedidos organizados enviados diretamente para o seu chat de atendimento.' },
+                            { icon: 'qr_code_2', title: 'QR Code TX', desc: 'Acesse o cardápio instantaneamente em cada mesa com tecnologia de elite.' }
+                        ].map((item, i) => (
+                            <ScrollReveal key={i} delay={i * 0.1}>
+                                <div className="p-10 rounded-[3rem] glass-effect-dark border-white/5 hover:border-accent/30 transition-all group">
+                                    <div className="size-14 rounded-2xl bg-accent/20 text-accent flex items-center justify-center mb-8 border border-accent/20 transition-transform group-hover:scale-110">
+                                        <span className="material-symbols-outlined text-3xl">{item.icon}</span>
+                                    </div>
+                                    <h3 className="text-xl font-black mb-4 uppercase tracking-tight">{item.title}</h3>
+                                    <p className="text-slate-400 text-sm font-medium leading-relaxed italic">"{item.desc}"</p>
+                                </div>
+                            </ScrollReveal>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Automation Highlight */}
+                <section className="px-6 relative overflow-hidden">
+                    <div className="max-w-5xl mx-auto">
+                        <ScrollReveal>
+                            <div className="relative bg-[#0B0E14] rounded-[4rem] p-12 lg:p-20 text-center flex flex-col items-center border border-white/5 overflow-hidden shadow-2xl">
+                                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-primary/10 opacity-50"></div>
+                                <h2 className="text-4xl md:text-5xl font-black mb-10 leading-tight tracking-tighter uppercase relative z-10">LIDERE O MERCADO <br /> <span className="text-gradient">GASTRONÔMICO.</span></h2>
+                                <p className="text-slate-400 text-lg font-medium leading-relaxed mb-12 italic max-w-2xl relative z-10">
+                                    "A era digital não espera. Coloque seu restaurante na vanguarda tecnológica com a TX Digital Studio."
+                                </p>
+                                <ReflectiveButton
+                                    variant="accent"
+                                    size="lg"
+                                    onClick={handleWhatsAppClick}
+                                >
+                                    INICIAR MEU PROJETO
+                                </ReflectiveButton>
+                            </div>
+                        </ScrollReveal>
                     </div>
                 </section>
             </main>

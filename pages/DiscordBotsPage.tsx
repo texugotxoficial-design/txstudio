@@ -5,8 +5,8 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ChatAssistant from '../components/ChatAssistant';
 import LeadModal from '../components/LeadModal';
-
 import ScrollReveal from '../components/ScrollReveal';
+import ReflectiveButton from '../components/ReflectiveButton';
 
 const DiscordBotsPage: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,309 +25,356 @@ const DiscordBotsPage: React.FC = () => {
         window.open('https://discord.gg/C9pVx4muZG', '_blank');
     };
 
+    const features = [
+        {
+            title: 'Canais Dinâmicos',
+            desc: 'Criação e exclusão inteligente de salas de voz. Mantenha seu servidor sempre limpo e organizado.',
+            icon: 'cyclone',
+            color: 'primary'
+        },
+        {
+            title: 'Ranking de Voz & XP',
+            desc: 'Gamifique a participação com sistemas de níveis baseados em tempo de call e atividade de chat.',
+            icon: 'leaderboard',
+            color: 'accent'
+        },
+        {
+            title: 'Logs de Auditoria',
+            desc: 'Saiba exatamente tudo o que acontece. Registros detalhados em canais privados de staff.',
+            icon: 'description',
+            color: 'primary'
+        },
+        {
+            title: 'Gestão Hierárquica',
+            desc: 'Autoroles, reaction roles e comandos administrativos para um controle total da hierarquia.',
+            icon: 'manage_accounts',
+            color: 'accent'
+        }
+    ];
+
+    const plans = [
+        {
+            name: "START Bot",
+            price: "R$ 50",
+            desc: "Ideal para pequenas comunidades.",
+            features: [
+                "Mensagem de Boas-vindas VIP",
+                "Auto-Role (Cargo Inicial)",
+                "Comandos de Moderação",
+                "Suporte TX via Ticket"
+            ],
+            variant: "primary" as const
+        },
+        {
+            name: "PRO Community",
+            price: "R$ 120",
+            popular: true,
+            desc: "Engajamento e automação total.",
+            features: [
+                "Tudo do plano START",
+                "Sistema de XP e Níveis",
+                "Canais de Voz Dinâmicos",
+                "Logs de Auditoria Avançados",
+                "Customização de Identidade"
+            ],
+            variant: "accent" as const
+        },
+        {
+            name: "ELITE Custom",
+            price: "Sob Consulta",
+            desc: "Poder total para grandes marcas.",
+            features: [
+                "Bot 100% Exclusivo (Nome/Foto)",
+                "Integração com APIs & Sites",
+                "Sistemas de Loja & Economia",
+                "Suporte Prioritário 24/7"
+            ],
+            variant: "primary" as const
+        }
+    ];
+
     return (
-        <div className="bg-bg-light dark:bg-bg-dark min-h-screen font-display text-text-primary-light dark:text-text-primary-dark antialiased transition-colors duration-300">
-            <div className="relative flex min-h-screen w-full flex-col group/design-root">
-                <Navbar />
+        <div className="bg-bg-dark min-h-screen text-white transition-colors duration-300">
+            <Navbar />
 
-                <main className="flex-grow">
-                    {/* Hero Section */}
-                    <section className="relative py-16 md:py-24 lg:py-32 bg-[#020617] overflow-hidden">
-                        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-[1200px] pointer-events-none z-0">
-                            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-[#5865F2]/20 rounded-full blur-[120px]"></div>
-                            <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-purple-600/10 rounded-full blur-[120px]"></div>
+            <main className="pt-32 pb-20">
+                <section className="px-6 mb-32 relative">
+                    <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                        <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 scale-110 blur-[4px]"
+                            style={{ backgroundImage: `url('https://raw.githubusercontent.com/txdigitalstudio/assets/main/studio-bg.png')` }}>
                         </div>
+                        <div className="absolute inset-0 bg-gradient-to-b from-bg-dark via-bg-dark/50 to-bg-dark"></div>
+                        <div className="ambient-light top-[10%] right-[5%] w-[40%] h-[40%] bg-[#5865F2]/10"></div>
+                    </div>
 
-                        <div className="layout-container px-4 md:px-10 flex justify-center relative z-10">
-                            <div className="layout-content-container flex flex-col lg:flex-row max-w-[1280px] w-full gap-12 items-center">
-                                <div className="flex-1 text-center lg:text-left">
-                                    <ScrollReveal direction="left">
-                                        <div className="inline-flex self-center lg:self-start items-center gap-2 px-3 py-1 rounded-full bg-[#5865F2]/10 border border-[#5865F2]/20 mb-6">
-                                            <span className="w-2 h-2 rounded-full bg-[#5865F2] animate-pulse"></span>
-                                            <span className="text-xs font-bold text-slate-300 uppercase tracking-wider">Novidade: Bots Personalizados</span>
-                                        </div>
-                                        <h1 className="text-white text-4xl sm:text-5xl lg:text-6xl font-black leading-tight tracking-tight mb-6">
-                                            A automação que seu <span className="text-[#5865F2]">Discord</span> merece
-                                        </h1>
-                                        <p className="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 mb-8 font-light">
-                                            Transforme sua comunidade com bots exclusivos. Automatize a moderação, engaje membros com ranking de voz e gerencie cargos sem esforço manual.
-                                        </p>
-                                        <div className="flex flex-wrap justify-center lg:justify-start gap-4">
-                                            <button
-                                                onClick={handleDiscordContactClick}
-                                                className="bg-white text-black font-black py-4 px-8 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-xl shadow-white/5"
-                                            >
-                                                Falar com Especialista
-                                            </button>
-                                            <Link
-                                                to="/planos-bots"
-                                                className="bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold py-4 px-8 rounded-xl transition-all backdrop-blur-sm"
-                                            >
-                                                Ver Planos
-                                            </Link>
-                                        </div>
-                                    </ScrollReveal>
+                    <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16 relative z-10">
+                        <div className="flex-1 text-center lg:text-left">
+                            <ScrollReveal direction="right">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#5865F2]/10 border border-[#5865F2]/20 mb-8 mx-auto lg:mx-0">
+                                    <span className="size-2 rounded-full bg-[#5865F2] animate-pulse"></span>
+                                    <span className="text-[#5865F2] text-[10px] font-black uppercase tracking-[0.2em]">Sistemas de Automação Discord</span>
                                 </div>
-
-                                <div className="flex-1 w-full max-w-[500px]">
-                                    <ScrollReveal direction="right" delay={0.2}>
-                                        <div className="relative aspect-video bg-slate-900/80 rounded-2xl border border-white/10 shadow-2xl p-6 backdrop-blur-md group overflow-hidden">
-                                            <div className="absolute inset-0 bg-gradient-to-br from-[#5865F2]/10 to-transparent"></div>
-                                            {/* Mock Bot Interface */}
-                                            <div className="flex flex-col gap-4 relative z-10">
-                                                <div className="flex items-center gap-3">
-                                                    <div className="w-10 h-10 bg-[#5865F2] rounded-full flex items-center justify-center">
-                                                        <span className="material-symbols-outlined text-white text-xl">smart_toy</span>
-                                                    </div>
-                                                    <div className="flex flex-col">
-                                                        <span className="text-white font-bold text-xs flex items-center gap-1">LocalPro Bot <span className="bg-[#5865F2] px-1 rounded text-[8px]">BOT</span></span>
-                                                        <span className="text-slate-400 text-[10px]">Hoje às 14:30</span>
-                                                    </div>
-                                                </div>
-                                                <div className="bg-white/5 rounded-xl border border-white/10 p-4">
-                                                    <h4 className="text-white text-sm font-bold mb-3 flex items-center gap-2">
-                                                        <span className="material-symbols-outlined text-yellow-500 text-sm">trophy</span>
-                                                        Ranking de Atividade Semanal
-                                                    </h4>
-                                                    <div className="flex flex-col gap-2">
-                                                        <div className="flex items-center justify-between text-[10px] text-slate-300 border-b border-white/5 pb-1">
-                                                            <span>#1 @UsuarioMaster</span>
-                                                            <span className="text-[#5865F2]">43h em call</span>
-                                                        </div>
-                                                        <div className="flex items-center justify-between text-[10px] text-slate-300 border-b border-white/5 pb-1">
-                                                            <span>#2 @ModeradorPro</span>
-                                                            <span className="text-slate-400">38h em call</span>
-                                                        </div>
-                                                        <div className="flex items-center justify-between text-[10px] text-slate-300 border-b border-white/5 pb-1">
-                                                            <span>#3 @NovatoGamer</span>
-                                                            <span className="text-slate-400">12h em call</span>
-                                                        </div>
-                                                    </div>
-                                                    <p className="text-[8px] text-slate-500 mt-3 italic text-center">Atualizado automaticamente a cada 5 minutos.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </ScrollReveal>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Features Section */}
-                    <section className="py-20 bg-bg-light dark:bg-[#0B0E14]">
-                        <div className="layout-container px-4 md:px-10 flex flex-col items-center">
-                            <ScrollReveal>
-                                <div className="max-w-2xl text-center mb-16">
-                                    <h2 className="text-text-primary-light dark:text-white text-3xl md:text-4xl font-black mb-4 tracking-tight">Funcionalidades Essenciais</h2>
-                                    <p className="text-text-secondary-light dark:text-slate-400 text-lg">Nossos bots são desenvolvidos com módulos robustos para cobrir todas as necessidades de gestão da sua comunidade.</p>
-                                </div>
-                            </ScrollReveal>
-
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full max-w-[1280px]">
-                                {[
-                                    { title: 'Canais Dinâmicos', desc: 'Criação e exclusão automática de salas de voz. Mantenha seu servidor limpo e organizado sem intervenção manual.', icon: 'cyclone', color: '#5865F2' },
-                                    { title: 'Ranking de Voz', desc: 'Gamifique a participação. Sistema de XP baseado em tempo conectado em chamadas de voz e atividade de chat.', icon: 'leaderboard', color: '#E91E63' },
-                                    { title: 'Logs de Registro', desc: 'Auditoria completa. Saiba exatamente quem entrou, saiu, ou foi movido, com logs detalhados em canais privados.', icon: 'description', color: '#2563EB' },
-                                    { title: 'Gestão de Cargos', desc: 'Autoroles ao entrar no servidor, reaction roles e comandos administrativos para gerenciar hierarquia.', icon: 'manage_accounts', color: '#10B981' }
-                                ].map((feature, idx) => (
-                                    <ScrollReveal key={idx} delay={idx * 0.1}>
-                                        <div className="p-8 rounded-2xl bg-surface-light dark:bg-white/5 border border-black/5 dark:border-white/10 hover:border-[#5865F2]/50 transition-all group h-full">
-                                            <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6`} style={{ backgroundColor: `${feature.color}15`, color: feature.color }}>
-                                                <span className="material-symbols-outlined">{feature.icon}</span>
-                                            </div>
-                                            <h3 className="text-text-primary-light dark:text-white text-xl font-bold mb-3">{feature.title}</h3>
-                                            <p className="text-text-secondary-light dark:text-slate-400 text-sm leading-relaxed">{feature.desc}</p>
-                                        </div>
-                                    </ScrollReveal>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Pricing Section */}
-                    <section id="planos" className="py-20 bg-bg-light dark:bg-[#020617] relative">
-                        <div className="layout-container px-4 md:px-10 flex flex-col items-center">
-                            <ScrollReveal>
-                                <div className="max-w-2xl text-center mb-16">
-                                    <h2 className="text-text-primary-light dark:text-white text-3xl md:text-4xl font-black mb-4 tracking-tight">Escolha seu Nível</h2>
-                                    <p className="text-text-secondary-light dark:text-slate-400 text-lg">Soluções flexíveis para servidores de todos os tamanhos, do casual ao profissional.</p>
-                                </div>
-                            </ScrollReveal>
-
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-[1200px]">
-                                {/* Iniciante */}
-                                <ScrollReveal delay={0.1}>
-                                    <div className="p-8 rounded-3xl bg-surface-light dark:bg-white/5 border border-black/5 dark:border-white/10 flex flex-col gap-8 transition-all hover:scale-[1.02] h-full">
-                                        <div className="flex flex-col gap-2">
-                                            <h3 className="text-text-primary-light dark:text-white text-2xl font-black">Iniciante</h3>
-                                            <p className="text-text-secondary-light dark:text-slate-400 text-sm">Para comunidades pequenas começando agora.</p>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-4xl font-black text-text-primary-light dark:text-white">R$ 50<span className="text-sm font-normal opacity-50">/mês</span></span>
-                                        </div>
-                                        <div className="flex flex-col gap-4 flex-1">
-                                            {[
-                                                'Mensagem de Boas-vindas',
-                                                'Auto-Role (Cargo Inicial)',
-                                                'Comandos básicos de moderação',
-                                                'Suporte via Ticket'
-                                            ].map((item, i) => (
-                                                <div key={i} className="flex items-start gap-3 text-sm">
-                                                    <span className="material-symbols-outlined text-green-500 text-lg">check_circle</span>
-                                                    <span className="text-text-secondary-light dark:text-slate-300">{item}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                        <button
-                                            onClick={() => openModal('Bot Discord: Iniciante')}
-                                            className="w-full py-4 rounded-xl border border-black/10 dark:border-white/10 text-text-primary-light dark:text-white font-bold hover:bg-black/5 dark:hover:bg-white/5 transition-all"
-                                        >
-                                            Começar Agora
-                                        </button>
-                                    </div>
-                                </ScrollReveal>
-
-                                {/* Comunidade Pro */}
-                                <ScrollReveal delay={0.2}>
-                                    <div className="p-8 rounded-3xl bg-surface-light dark:bg-white/5 border-2 border-[#5865F2] flex flex-col gap-8 transition-all hover:scale-[1.05] relative shadow-2xl shadow-[#5865F2]/20 h-full">
-                                        <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#5865F2] text-white text-[10px] font-black px-4 py-1.5 rounded-full uppercase tracking-tighter">Mais Popular</div>
-                                        <div className="flex flex-col gap-2">
-                                            <h3 className="text-text-primary-light dark:text-white text-2xl font-black">Comunidade Pro</h3>
-                                            <p className="text-text-secondary-light dark:text-slate-400 text-sm">Engajamento total e automação avançada.</p>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-4xl font-black text-text-primary-light dark:text-white">R$ 120<span className="text-sm font-normal opacity-50">/mês</span></span>
-                                        </div>
-                                        <div className="flex flex-col gap-4 flex-1">
-                                            {[
-                                                'Tudo do plano Iniciante',
-                                                'Sistema de Ranking (Nível/XP)',
-                                                'Criação de Canais de Voz Dinâmicos',
-                                                'Logs de Auditoria Completos',
-                                                'Personalização de Cores/Embeds'
-                                            ].map((item, i) => (
-                                                <div key={i} className="flex items-start gap-3 text-sm">
-                                                    <span className="material-symbols-outlined text-[#5865F2] text-lg">check_circle</span>
-                                                    <span className="text-text-secondary-light dark:text-slate-300 font-medium">{item}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                        <button
-                                            onClick={() => openModal('Bot Discord: Comunidade Pro')}
-                                            className="w-full py-4 rounded-xl bg-[#5865F2] text-white font-black hover:bg-[#4752C4] transition-all shadow-lg shadow-[#5865F2]/30"
-                                        >
-                                            Contratar Pro
-                                        </button>
-                                    </div>
-                                </ScrollReveal>
-
-                                {/* Enterprise */}
-                                <ScrollReveal delay={0.3}>
-                                    <div className="p-8 rounded-3xl bg-surface-light dark:bg-white/5 border border-black/5 dark:border-white/10 flex flex-col gap-8 transition-all hover:scale-[1.02] h-full">
-                                        <div className="flex flex-col gap-2">
-                                            <h3 className="text-text-primary-light dark:text-white text-2xl font-black">Enterprise</h3>
-                                            <p className="text-text-secondary-light dark:text-slate-400 text-sm">Funcionalidades customizadas para negócios.</p>
-                                        </div>
-                                        <div className="flex flex-col">
-                                            <span className="text-3xl font-black text-text-primary-light dark:text-white uppercase tracking-tight">Sob Consulta</span>
-                                        </div>
-                                        <div className="flex flex-col gap-4 flex-1">
-                                            {[
-                                                'Bot Exclusivo (Nome/Foto Próprios)',
-                                                'Integração com APIs Externas',
-                                                'Sistemas de Pagamento/Loja',
-                                                'Suporte Prioritário 24/7'
-                                            ].map((item, i) => (
-                                                <div key={i} className="flex items-start gap-3 text-sm">
-                                                    <span className="material-symbols-outlined text-purple-500 text-lg">check_circle</span>
-                                                    <span className="text-text-secondary-light dark:text-slate-300">{item}</span>
-                                                </div>
-                                            ))}
-                                        </div>
-                                        <button
-                                            onClick={() => openModal('Bot Discord: Enterprise')}
-                                            className="w-full py-4 rounded-xl border border-black/10 dark:border-white/10 text-text-primary-light dark:text-white font-bold hover:bg-black/5 dark:hover:bg-white/5 transition-all"
-                                        >
-                                            Falar com Vendas
-                                        </button>
-                                    </div>
-                                </ScrollReveal>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Community Section - LanHouse */}
-                    <section className="py-20 bg-bg-light dark:bg-[#0B0E14] border-t border-black/5 dark:border-white/5">
-                        <div className="layout-container px-4 md:px-10 flex flex-col lg:flex-row items-center justify-center gap-16 max-w-[1280px] mx-auto">
-                            <div className="max-w-xl text-center lg:text-left">
-                                <ScrollReveal direction="left">
-                                    <h2 className="text-text-primary-light dark:text-white text-3xl md:text-5xl font-black mb-6 tracking-tight">Participe da Nossa Comunidade</h2>
-                                    <p className="text-text-secondary-light dark:text-slate-400 text-lg leading-relaxed mb-8">
-                                        Conheça a <span className="text-[#5865F2] font-bold">LanHouse</span>, nosso servidor oficial dedicado a amizades, games e uma experiência única no Discord. Veja nossos bots em ação e interaja com outros membros.
-                                    </p>
-                                    <button
-                                        onClick={handleLanHouseClick}
-                                        className="bg-[#5865F2] hover:bg-[#4752C4] text-white font-black py-4 px-10 rounded-2xl transition-all shadow-xl shadow-[#5865F2]/20 flex items-center gap-3 animate-bounce-slow mx-auto lg:mx-0"
+                                <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tighter">
+                                    A INTELIGÊNCIA <br /> DO SEU <span className="text-[#5865F2]">DISCORD.</span>
+                                </h1>
+                                <p className="text-xl text-slate-400 max-w-2xl mx-auto lg:mx-0 mb-12 font-medium leading-relaxed italic">
+                                    "Transformamos seu servidor em uma máquina de engajamento autônoma. Moderação cirúrgica e sistemas que retêm seus membros."
+                                </p>
+                                <div className="flex flex-wrap justify-center lg:justify-start gap-5">
+                                    <ReflectiveButton
+                                        size="lg"
+                                        onClick={handleDiscordContactClick}
                                     >
-                                        <svg className="w-6 h-6 fill-current" viewBox="0 0 127.14 96.36">
-                                            <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.71,32.65-1.82,56.6.48,80.21a105.73,105.73,0,0,0,32.22,16.15c2.45-3.35,4.63-6.9,6.54-10.59a67.17,67.17,0,0,1-10.46-5c.86-.63,1.72-1.3,2.55-2a80.38,80.38,0,0,0,64.75,0c.84.69,1.7,1.36,2.56,2a67.59,67.59,0,0,1-10.46,5c1.9,3.69,4.08,7.24,6.54,10.6a105.79,105.79,0,0,0,32.23-16.15C130.33,52.34,121.72,28.7,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.72,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91,65.69,84.69,65.69Z" />
-                                        </svg>
-                                        Entrar na LanHouse
-                                    </button>
-                                </ScrollReveal>
-                            </div>
+                                        ESTRUTURAR MEU BOT
+                                        <span className="material-symbols-outlined">smart_toy</span>
+                                    </ReflectiveButton>
+                                    <ReflectiveButton
+                                        variant="accent"
+                                        size="lg"
+                                        onClick={handleLanHouseClick}
+                                    >
+                                        ENTRAR NA LANHOUSE
+                                        <span className="material-symbols-outlined">sports_esports</span>
+                                    </ReflectiveButton>
+                                </div>
+                            </ScrollReveal>
+                        </div>
 
-                            {/* Discord Community Card Mockup */}
-                            <ScrollReveal direction="right" delay={0.2}>
-                                <div className="w-full max-w-[320px] bg-[#1E1F22] rounded-2xl overflow-hidden shadow-2xl transition-transform hover:-rotate-2 duration-500">
-                                    <div className="h-24 bg-gradient-to-r from-[#FF0080] to-[#7928CA]"></div>
-                                    <div className="p-4 pt-0 relative flex flex-col gap-4">
-                                        <div className="relative -mt-10 w-20 h-20 rounded-2xl bg-[#000000] p-1 border-4 border-[#1E1F22] overflow-hidden">
-                                            <div className="w-full h-full bg-[#5865F2] flex items-center justify-center">
-                                                <span className="material-symbols-outlined text-white text-4xl">stadia_controller</span>
+                        <div className="flex-1 w-full max-w-[500px]">
+                            <ScrollReveal direction="left" delay={0.2}>
+                                <div className="relative group">
+                                    <div className="absolute -inset-1 bg-gradient-to-r from-[#5865F2] to-primary rounded-[2.5rem] blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
+                                    <div className="relative bg-[#0B0E14] rounded-[2rem] border border-white/10 p-8 shadow-2xl overflow-hidden">
+                                        {/* Mock Bot Header */}
+                                        <div className="flex items-center gap-4 mb-8">
+                                            <div className="size-14 rounded-full bg-gradient-to-br from-[#5865F2] to-primary flex items-center justify-center shadow-lg shadow-[#5865F2]/20 overflow-hidden border border-white/20">
+                                                <img src="/logo_tx.jpg" alt="TX Bot" className="w-full h-full object-cover" />
+                                            </div>
+                                            <div>
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    <span className="text-white font-black text-base italic uppercase tracking-tighter">TX_CORE_V2</span>
+                                                    <span className="bg-[#5865F2] text-white text-[9px] font-black px-1.5 py-0.5 rounded-sm">BOT</span>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <span className="size-2 rounded-full bg-green-500 animate-pulse"></span>
+                                                    <span className="text-slate-500 text-[10px] font-black uppercase tracking-widest">Protocolo Ativo</span>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div className="flex flex-col gap-1">
-                                            <h4 className="text-white font-bold text-lg flex items-center gap-1.5">
-                                                LanHouse
-                                                <span className="material-symbols-outlined text-pink-500 text-sm">home</span>
-                                            </h4>
-                                            <div className="flex items-center gap-3 text-xs">
-                                                <span className="flex items-center gap-1 text-slate-300">
-                                                    <span className="w-2 h-2 rounded-full bg-green-500"></span> 20 online
-                                                </span>
-                                                <span className="flex items-center gap-1 text-slate-300">
-                                                    <span className="w-2 h-2 rounded-full bg-slate-500"></span> 78 membros
-                                                </span>
+
+                                        {/* Mock Command Area */}
+                                        <div className="space-y-4">
+                                            <div className="p-4 rounded-2xl bg-white/5 border border-white/5">
+                                                <div className="flex items-center gap-2 mb-2 text-primary">
+                                                    <span className="material-symbols-outlined text-sm">leaderboard</span>
+                                                    <span className="text-[10px] font-black uppercase tracking-widest">Melhores da Semana</span>
+                                                </div>
+                                                <div className="space-y-2">
+                                                    <div className="flex justify-between items-center text-xs font-bold text-slate-300">
+                                                        <span>#1 @RafaelTX</span>
+                                                        <span className="text-accent italic">48h Call</span>
+                                                    </div>
+                                                    <div className="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                                                        <div className="h-full bg-primary w-[80%]"></div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <p className="text-[10px] text-slate-400 mt-1">Desde jan. de 2025</p>
-                                        </div>
-                                        <p className="text-xs text-slate-300 leading-tight">
-                                            Servidor dedicado a fazer amizades e criar uma comunidade divertida
-                                        </p>
-                                        <div className="flex flex-wrap gap-2 py-2">
-                                            {['Games', 'Amizades', 'Guilds', 'XP', 'Diversão'].map((tag, i) => (
-                                                <span key={i} className="px-2 py-1 bg-white/5 rounded-md text-[9px] text-slate-300 border border-white/5">{tag}</span>
-                                            ))}
-                                        </div>
-                                        <div className="bg-[#2B2D31] rounded-lg p-3 text-[10px] text-slate-300 italic text-center">
-                                            "A melhor LanHouse virtual que você já viu!"
+
+                                            <div className="p-4 rounded-2xl bg-white/5 border border-white/5">
+                                                <div className="flex items-center gap-2 mb-2 text-accent">
+                                                    <span className="material-symbols-outlined text-sm">security</span>
+                                                    <span className="text-[10px] font-black uppercase tracking-widest">Atividade de Moderação</span>
+                                                </div>
+                                                <p className="text-[10px] text-slate-400 italic">"Filtro Anti-Spam ativado. Sistema de proteção operando em 100% de eficácia."</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </ScrollReveal>
                         </div>
-                    </section>
-                </main>
+                    </div>
+                </section>
 
-                <Footer />
-                <ChatAssistant />
-                <LeadModal
-                    isOpen={isModalOpen}
-                    onClose={() => setIsModalOpen(false)}
-                    projectType={selectedProject}
-                />
-            </div>
+                {/* Features section */}
+                <section className="px-6 mb-32">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {features.map((feature, idx) => (
+                                <ScrollReveal key={idx} delay={idx * 0.1}>
+                                    <div className="p-10 rounded-[3rem] glass-effect-dark border-white/5 hover:border-white/20 transition-all h-full group">
+                                        <div className={`size-14 rounded-2xl flex items-center justify-center mb-8 border border-white/5 transition-transform group-hover:scale-110
+                                            ${feature.color === 'primary' ? 'bg-primary/20 text-primary' : 'bg-accent/20 text-accent'}
+                                        `}>
+                                            <span className="material-symbols-outlined text-3xl">{feature.icon}</span>
+                                        </div>
+                                        <h3 className="text-xl font-black mb-4">{feature.title}</h3>
+                                        <p className="text-slate-400 text-sm font-medium leading-relaxed">{feature.desc}</p>
+                                    </div>
+                                </ScrollReveal>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Pricing section */}
+                <section id="planos" className="px-6 mb-32 relative">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="text-center mb-20">
+                            <ScrollReveal>
+                                <h1 className="text-4xl md:text-5xl font-black mb-6">PLANOS DE <span className="text-gradient">AUTOMAÇÃO.</span></h1>
+                                <p className="text-slate-400 font-medium text-lg">Investimento mensal para manter sua comunidade no próximo nível.</p>
+                            </ScrollReveal>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            {plans.map((plan, idx) => (
+                                <ScrollReveal key={idx} delay={idx * 0.1}>
+                                    <div className={`p-10 rounded-[3rem] flex flex-col h-full relative transition-all duration-500
+                                        ${plan.popular
+                                            ? 'bg-gradient-to-b from-primary/10 to-bg-dark border-2 border-primary/30 shadow-2xl scale-105 z-10'
+                                            : 'glass-effect-dark border-white/5'
+                                        }
+                                    `}>
+                                        {plan.popular && (
+                                            <span className="absolute -top-5 left-1/2 -translate-x-1/2 bg-accent text-white text-[10px] font-black px-6 py-2 rounded-full uppercase tracking-widest shadow-xl">MOST POPULAR</span>
+                                        )}
+
+                                        <div className="mb-8">
+                                            <h3 className="text-3xl font-black mb-3">{plan.name}</h3>
+                                            <p className="text-sm text-slate-400 font-medium italic">{plan.desc}</p>
+                                        </div>
+
+                                        <div className="text-4xl font-black mb-10 tracking-tighter">
+                                            {plan.price}
+                                        </div>
+
+                                        <ul className="flex-1 space-y-5 mb-12">
+                                            {plan.features.map((f, i) => (
+                                                <li key={i} className="flex items-start gap-4 text-sm font-bold text-slate-300">
+                                                    <span className={`size-2 rounded-full mt-1.5 shrink-0
+                                                        ${plan.variant === 'primary' ? 'bg-primary' : 'bg-accent'}
+                                                    `}></span>
+                                                    {f}
+                                                </li>
+                                            ))}
+                                        </ul>
+
+                                        <ReflectiveButton
+                                            variant={plan.variant}
+                                            size="lg"
+                                            className="w-full"
+                                            onClick={() => openModal(`Bot: ${plan.name}`)}
+                                        >
+                                            SOLICITAR BOT
+                                        </ReflectiveButton>
+                                    </div>
+                                </ScrollReveal>
+                            ))}
+                        </div>
+                    </div>
+                </section>
+
+                {/* Community Section - Elevated */}
+                <section className="px-6 py-32 relative overflow-hidden bg-bg-dark border-t border-white/5">
+                    <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+                        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#5865F2]/20 via-transparent to-primary/20"></div>
+                    </div>
+
+                    <div className="max-w-7xl mx-auto relative z-10">
+                        <ScrollReveal>
+                            <div className="glass-effect-dark border-white/10 rounded-[4rem] p-12 lg:p-24 relative overflow-hidden group shadow-2xl shadow-black/80">
+                                <div className="absolute inset-0 bg-gradient-to-tr from-[#5865F2]/10 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000"></div>
+
+                                <div className="flex flex-col lg:flex-row items-center gap-20">
+                                    <div className="flex-1 text-center lg:text-left">
+                                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#5865F2]/20 border border-[#5865F2]/30 text-[#5865F2] text-[10px] font-black uppercase tracking-[0.2em] mb-8">
+                                            Comunidade Oficial
+                                        </div>
+                                        <h2 className="text-4xl md:text-7xl font-black mb-10 leading-[0.9] tracking-tighter">
+                                            VEJA A <br /> <span className="text-gradient">MAGIA AO VIVO.</span>
+                                        </h2>
+                                        <p className="text-slate-400 text-xl font-medium leading-relaxed mb-12 italic max-w-xl mx-auto lg:mx-0">
+                                            "Acesse a LanHouse, nosso hub de elite. Interaja com bots de alta performance e sinta a diferença que a automação TX faz."
+                                        </p>
+
+                                        <ReflectiveButton
+                                            size="lg"
+                                            className="w-full sm:w-fit"
+                                            onClick={handleLanHouseClick}
+                                        >
+                                            ENTRAR NA COMUNIDADE TX
+                                            <span className="material-symbols-outlined">rocket_launch</span>
+                                        </ReflectiveButton>
+                                    </div>
+
+                                    <div className="w-full max-w-[400px]">
+                                        <div className="relative group/discord">
+                                            <div className="absolute -inset-2 bg-gradient-to-r from-[#5865F2] to-primary rounded-[3.5rem] blur-xl opacity-20 group-hover/discord:opacity-40 transition duration-1000"></div>
+                                            <div className="relative bg-[#1E1F22] rounded-[3rem] overflow-hidden shadow-2xl transition-all duration-700 group-hover/discord:-rotate-1 group-hover/discord:scale-[1.02] border border-white/10">
+                                                <div className="h-32 bg-gradient-to-br from-[#5865F2] via-[#4752C4] to-primary relative overflow-hidden">
+                                                    <div className="absolute inset-0 opacity-30 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')]"></div>
+                                                </div>
+                                                <div className="p-10 pt-0 relative flex flex-col gap-8">
+                                                    <div className="relative -mt-16 size-32 rounded-[2.5rem] bg-[#1E1F22] p-2 shadow-2xl">
+                                                        <div className="size-full bg-[#313338] rounded-[2rem] flex items-center justify-center border border-white/10 group-hover/discord:rotate-12 transition-transform duration-700">
+                                                            <span className="material-symbols-outlined text-white text-6xl">stadia_controller</span>
+                                                        </div>
+                                                        <div className="absolute bottom-1 right-1 size-8 rounded-full bg-green-500 border-4 border-[#1E1F22] animate-pulse"></div>
+                                                    </div>
+
+                                                    <div>
+                                                        <h4 className="text-white font-black text-3xl flex items-center gap-3 mb-2">
+                                                            TX LanHouse
+                                                            <span className="material-symbols-outlined text-[#5865F2] text-2xl">verified</span>
+                                                        </h4>
+                                                        <div className="flex flex-col gap-2">
+                                                            <div className="flex items-center gap-3 text-[11px] font-black uppercase tracking-widest text-slate-400">
+                                                                <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-full bg-green-500"></span> 157 ONLINE</span>
+                                                                <span className="size-1 rounded-full bg-slate-700"></span>
+                                                                <span className="flex items-center gap-1.5"><span className="size-2.5 rounded-full bg-slate-500"></span> 3.4k MEMBROS</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="flex flex-wrap gap-2.5">
+                                                        {['AI Evolution', 'Automation', 'Gaming HQ', 'Elite VIP'].map((tag, i) => (
+                                                            <span key={i} className="px-4 py-1.5 bg-white/5 rounded-full text-[10px] text-slate-300 border border-white/10 font-bold uppercase tracking-wider">{tag}</span>
+                                                        ))}
+                                                    </div>
+
+                                                    <div className="h-px bg-white/5 w-full"></div>
+
+                                                    <div className="flex items-center justify-between">
+                                                        <div className="flex -space-x-3">
+                                                            {[1, 2, 3, 4].map(i => (
+                                                                <div key={i} className="size-10 rounded-full border-2 border-[#1E1F22] bg-slate-800 flex items-center justify-center overflow-hidden">
+                                                                    <img src={`https://i.pravatar.cc/100?img=${i + 10}`} alt="User" className="w-full h-full object-cover opacity-80" />
+                                                                </div>
+                                                            ))}
+                                                            <div className="size-10 rounded-full border-2 border-[#1E1F22] bg-primary flex items-center justify-center text-[10px] font-black text-white">
+                                                                +42
+                                                            </div>
+                                                        </div>
+                                                        <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Ativo Agora</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </ScrollReveal>
+                    </div>
+                </section>
+            </main>
+
+            <Footer />
+            <ChatAssistant />
+            <LeadModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                projectType={selectedProject}
+            />
         </div>
     );
 };

@@ -5,8 +5,10 @@ import Footer from '../components/Footer';
 import ChatAssistant from '../components/ChatAssistant';
 import ScrollReveal from '../components/ScrollReveal';
 import LeadModal from '../components/LeadModal';
+import ReflectiveButton from '../components/ReflectiveButton';
 
 const PlanosAppsPage: React.FC = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedProject, setSelectedProject] = useState('');
 
@@ -17,146 +19,177 @@ const PlanosAppsPage: React.FC = () => {
 
     const appPlans = [
         {
-            name: "Institucional",
-            creation: "R$ 600",
-            hosting: "R$ 35",
-            desc: "Ideal para apresentação profissional e institucional.",
+            name: "START Institutional",
+            creation: "R$ 590",
+            hosting: "R$ 39",
+            desc: "Presença digital sólida para quem está começando com autoridade.",
             features: [
-                "Página Única (One Page)",
-                "História e Valores",
-                "Localização GPS Integrada",
-                "Links para Redes Sociais",
-                "Botão de WhatsApp",
-                "Hospedagem Dedicada"
+                "One Page de Alta Conversão",
+                "Design Mobile-First",
+                "SEO Base Otimizado",
+                "Links Bio & Redes Sociais",
+                "Botão de WhatsApp Direto",
+                "Hospedagem Cloud Inclusa"
             ],
-            color: "blue",
-            target: "Pequenas Empresas"
+            color: "primary",
+            variant: "primary" as const
         },
         {
-            name: "Delivery & Restaurante",
-            creation: "R$ 1.200",
-            hosting: "R$ 65",
+            name: "PRO Experience",
+            creation: "R$ 1.150",
+            hosting: "R$ 69",
             popular: true,
-            desc: "Seu cardápio digital completo na palma da mão do cliente.",
+            desc: "A solução completa para restaurantes, delivery e serviços premium.",
             features: [
-                "Cardápio Digital Interativo",
-                "Pedidos Direto no WhatsApp",
-                "Galeria de Fotos dos Pratos",
-                "Horário de Funcionamento",
-                "Taxas de Entrega Editáveis",
-                "Hospedagem de Alta Performance"
+                "Cardápio / Catálogo Interativo",
+                "Sistema de Pedidos WhatsApp",
+                "Dashboard de Gestão Simples",
+                "Galeria de Fotos Ultra HD",
+                "Horários Dinâmicos",
+                "Suporte Prioritário TX"
             ],
-            color: "orange",
-            target: "Restaurantes e Bares"
+            color: "accent",
+            variant: "accent" as const
         },
         {
-            name: "Catálogo & Comércio",
-            creation: "R$ 1.800+",
-            hosting: "R$ 85",
-            desc: "Vitrine virtual completa para seus produtos e serviços.",
+            name: "ELITE Custom",
+            creation: "R$ 1.890+",
+            hosting: "R$ 89",
+            desc: "Lojas virtuais e sistemas complexos sob medida para o seu lucro.",
             features: [
-                "Catalogo com Categorias",
-                "Página de Detalhes do Produto",
-                "Sistema de Busca Interna",
-                "Filtros Personalizados",
-                "Botão de Orçamento Direto",
-                "Suporte Prioritário"
+                "Catálogo Multicategorias",
+                "Busca Inteligente & Filtros",
+                "Área de Orçamentos VIP",
+                "Integração com APIs",
+                "Design 100% Exclusivo",
+                "Consultoria de Lançamento"
             ],
-            color: "purple",
-            target: "Lojas e Serviços"
+            color: "primary",
+            variant: "primary" as const
         }
     ];
 
     return (
-        <div className="bg-bg-light dark:bg-bg-dark min-h-screen text-text-primary-light dark:text-text-primary-dark transition-colors duration-300">
+        <div className="bg-bg-dark min-h-screen text-white transition-colors duration-300">
             <Navbar />
-            <main className="py-20 px-4">
-                <div className="max-w-7xl mx-auto text-center mb-16">
+
+            <section className="pt-32 pb-20 px-4 relative overflow-hidden">
+                <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+                    <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30 scale-110 blur-[4px]"
+                        style={{ backgroundImage: `url('https://raw.githubusercontent.com/txdigitalstudio/assets/main/studio-bg.png')` }}>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-bg-dark via-bg-dark/50 to-bg-dark"></div>
+                    <div className="ambient-light top-[10%] left-[5%] w-[40%] h-[40%] bg-primary/10"></div>
+                    <div className="ambient-light bottom-[10%] right-[5%] w-[35%] h-[35%] bg-accent/10" style={{ animationDelay: '-5s' }}></div>
+                </div>
+
+                <div className="max-w-7xl mx-auto text-center mb-24 relative z-10">
                     <ScrollReveal>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-blue/10 border border-primary-blue/20 mb-6 mx-auto">
-                            <span className="w-2 h-2 rounded-full bg-primary-blue animate-pulse"></span>
-                            <span className="text-primary-blue text-xs font-bold uppercase tracking-wide">Soluções Mobile & Web</span>
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-effect-dark border-primary/20 mb-8 mx-auto">
+                            <span className="text-accent text-[10px] font-black uppercase tracking-[0.2em]">Tabela de Investimento 2026</span>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-black mb-6">Planos de <span className="text-primary-blue">Aplicativos</span></h1>
-                        <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">Desenvolvimento profissional sem burocracia. Escolha o plano que melhor se adapta ao seu negócio.</p>
+                        <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight">
+                            PROJETOS QUE <br /> <span className="text-gradient">VIRALIZAM.</span>
+                        </h1>
+                        <p className="text-xl text-slate-400 max-w-2xl mx-auto font-medium">
+                            Investimento transparente, sem letras miúdas. Criamos o motor de vendas que o seu negócio merece.
+                        </p>
                     </ScrollReveal>
                 </div>
 
-                <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
                     {appPlans.map((plan, idx) => (
                         <ScrollReveal key={idx} delay={idx * 0.1}>
-                            <div className={`p-8 rounded-3xl bg-white dark:bg-white/5 border-2 ${plan.popular
-                                    ? 'border-primary-blue shadow-2xl'
-                                    : 'border-black/5 dark:border-white/10'
-                                } flex flex-col h-full relative`}>
+                            <div className={`
+                                group p-10 rounded-[3rem] transition-all duration-500 flex flex-col h-full relative
+                                ${plan.popular
+                                    ? 'bg-gradient-to-b from-primary/10 to-bg-dark border-2 border-primary/30 shadow-2xl shadow-primary/10 scale-105 z-20'
+                                    : 'bg-white/5 border border-white/10 hover:border-white/20'
+                                }
+                            `}>
                                 {plan.popular && (
-                                    <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary-blue text-white text-[10px] font-black px-4 py-1 rounded-full uppercase">
-                                        Mais Recomendado
+                                    <span className="absolute -top-5 left-1/2 -translate-x-1/2 bg-accent text-white text-[10px] font-black px-6 py-2 rounded-full uppercase tracking-widest shadow-xl">
+                                        BEST SELLER
                                     </span>
                                 )}
-                                <div className="mb-6">
-                                    <h3 className="text-2xl font-bold mb-1">{plan.name}</h3>
-                                    <span className="text-[10px] font-bold text-primary-blue uppercase tracking-[0.1em] mb-2 block">{plan.target}</span>
-                                    <p className="text-sm text-slate-500">{plan.desc}</p>
+
+                                <div className="mb-8">
+                                    <h3 className="text-3xl font-black mb-3 text-white">{plan.name}</h3>
+                                    <p className="text-sm text-slate-400 font-medium leading-relaxed">{plan.desc}</p>
                                 </div>
-                                <div className="space-y-4 mb-8 p-4 bg-black/5 dark:bg-white/5 rounded-2xl">
-                                    <div className="flex justify-between items-end">
-                                        <span className="text-xs text-slate-500 font-medium">Criação Única</span>
-                                        <span className="text-2xl font-black tracking-tight">{plan.creation}</span>
+
+                                <div className="space-y-6 mb-10 p-6 bg-white/5 rounded-3xl border border-white/5">
+                                    <div className="flex justify-between items-center">
+                                        <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Setup Único</span>
+                                        <span className="text-3xl font-black text-white tracking-tighter">{plan.creation}</span>
                                     </div>
-                                    <div className="flex justify-between items-end border-t border-black/5 dark:border-white/10 pt-4">
-                                        <span className="text-xs text-slate-500 font-medium">Hospedagem & Manutenção</span>
-                                        <span className="text-lg font-bold text-primary-blue">{plan.hosting}<span className="text-xs font-medium opacity-70">/mês</span></span>
+                                    <div className="h-px bg-white/10"></div>
+                                    <div className="flex justify-between items-center">
+                                        <span className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Cloud Mensal</span>
+                                        <div className="text-right">
+                                            <span className="text-xl font-black text-accent">{plan.hosting}</span>
+                                            <span className="text-[10px] text-slate-500 font-bold">/mês</span>
+                                        </div>
                                     </div>
                                 </div>
-                                <ul className="flex-1 space-y-4 mb-8">
+
+                                <ul className="flex-1 space-y-5 mb-12">
                                     {plan.features.map((f, i) => (
-                                        <li key={i} className="flex items-start gap-2 text-xs">
-                                            <span className="material-symbols-outlined text-primary-blue text-lg">check_circle</span>
+                                        <li key={i} className="flex items-start gap-4 text-sm font-medium text-slate-300">
+                                            <div className="size-5 rounded-full bg-primary/20 flex items-center justify-center mt-0.5 shrink-0">
+                                                <span className="material-symbols-outlined text-primary text-sm font-black">done</span>
+                                            </div>
                                             {f}
                                         </li>
                                     ))}
                                 </ul>
-                                <button
+
+                                <ReflectiveButton
+                                    variant={plan.variant}
+                                    size="lg"
+                                    className="w-full"
                                     onClick={() => openModal(plan.name)}
-                                    className={`w-full py-4 rounded-xl font-black transition-all ${plan.popular
-                                            ? 'bg-primary-blue text-white shadow-lg hover:bg-blue-600'
-                                            : 'bg-black/5 dark:bg-white/10 text-primary-blue dark:text-white hover:bg-black/10'
-                                        }`}
                                 >
-                                    Solicitar Projeto
-                                </button>
+                                    SOLICITAR AGORA
+                                </ReflectiveButton>
                             </div>
                         </ScrollReveal>
                     ))}
                 </div>
 
-                <div className="mt-20 max-w-4xl mx-auto">
+                <div className="mt-32 max-w-5xl mx-auto relative z-10">
                     <ScrollReveal>
-                        <div className="bg-primary-blue/5 border border-primary-blue/10 rounded-3xl p-8 md:p-12 text-center">
-                            <h2 className="text-2xl font-bold mb-4">Sobre a Hospedagem</h2>
-                            <p className="text-slate-500 dark:text-slate-400 mb-6">
-                                Nossos aplicativos são hospedados em infraestrutura dedicada, garantindo alta velocidade e disponibilidade 24/7.
-                                A taxa mensal cobre não apenas o servidor, mas também suporte técnico contínuo e atualizações de segurança.
+                        <div className="glass-effect-dark border-white/5 rounded-[3rem] p-12 text-center relative group overflow-hidden">
+                            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                            <h2 className="text-3xl font-black mb-6 text-white">Infraestrutura TX Cloud</h2>
+                            <p className="text-slate-400 mb-10 text-lg leading-relaxed max-w-3xl mx-auto font-medium">
+                                Não é apenas hospedagem. É o motor que mantém sua empresa online com 99.9% de uptime, segurança nível bancário e suporte humano real via WhatsApp.
                             </p>
-                            <div className="flex flex-wrap justify-center gap-6 text-sm font-bold">
-                                <div className="flex items-center gap-2">
-                                    <span className="material-symbols-outlined text-green-500">bolt</span>
-                                    Servidores SSD
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                                <div className="flex flex-col items-center gap-3">
+                                    <div className="size-14 rounded-2xl bg-white/5 flex items-center justify-center text-primary">
+                                        <span className="material-symbols-outlined text-3xl">bolt</span>
+                                    </div>
+                                    <span className="text-xs font-black uppercase tracking-widest text-slate-300">Edge Computing</span>
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <span className="material-symbols-outlined text-green-500">lock</span>
-                                    SSL Incluso
+                                <div className="flex flex-col items-center gap-3">
+                                    <div className="size-14 rounded-2xl bg-white/5 flex items-center justify-center text-accent">
+                                        <span className="material-symbols-outlined text-3xl">verified_user</span>
+                                    </div>
+                                    <span className="text-xs font-black uppercase tracking-widest text-slate-300">SSL Premium</span>
                                 </div>
-                                <div className="flex items-center gap-2">
-                                    <span className="material-symbols-outlined text-green-500">support_agent</span>
-                                    Suporte via Whats
+                                <div className="flex flex-col items-center gap-3">
+                                    <div className="size-14 rounded-2xl bg-white/5 flex items-center justify-center text-primary">
+                                        <span className="material-symbols-outlined text-3xl">headset_mic</span>
+                                    </div>
+                                    <span className="text-xs font-black uppercase tracking-widest text-slate-300">Suporte 24/7</span>
                                 </div>
                             </div>
                         </div>
                     </ScrollReveal>
                 </div>
-            </main>
+            </section>
+
             <Footer />
             <ChatAssistant />
             <LeadModal

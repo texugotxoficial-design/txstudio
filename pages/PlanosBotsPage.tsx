@@ -1,10 +1,10 @@
-
 import React, { useState } from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import ChatAssistant from '../components/ChatAssistant';
 import ScrollReveal from '../components/ScrollReveal';
 import LeadModal from '../components/LeadModal';
+import ReflectiveButton from '../components/ReflectiveButton';
 
 const PlanosBotsPage: React.FC = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,86 +17,113 @@ const PlanosBotsPage: React.FC = () => {
 
     const discordPlans = [
         {
-            name: "Iniciante",
+            name: "START Bot",
             creation: "R$ 150",
             hosting: "R$ 25",
-            desc: "Perfect para pequenas comunidades.",
-            features: ["Boas-vindas Automáticas", "Cargos por Reação", "Logs Básicos", "Hospedagem Dedicada"],
-            target: "Pequenos Servidores"
+            desc: "Ideal para pequenas comunidades e servidores em crescimento.",
+            features: ["Boas-vindas Automáticas", "Cargos por Reação (Autorole)", "Logs Básicos de Staff", "Hospedagem TX Dedicated"],
+            target: "Pequenos Servidores",
+            variant: "primary" as const
         },
         {
-            name: "Comunidade Pro",
+            name: "PRO Community",
             creation: "R$ 450",
             hosting: "R$ 45",
-            desc: "Foco em Gamers, GTARP e comunidades ativas.",
-            features: ["Sistema de XP/Ranking", "Economia Integrada", "Canais de Voz Dinâmicos", "Moderação Avançada"],
+            desc: "Foco total em Gamers, GTARP e comunidades competitivas.",
+            features: ["Sistema de XP & Ranking", "Economia Integrada", "Canais de Voz Dinâmicos", "Moderação TX Advanced"],
             popular: true,
-            target: "GTARP / Servidores Games"
+            target: "GTARP / Servidores Games",
+            variant: "accent" as const
         },
         {
-            name: "Enterprise",
+            name: "ELITE Enterprise",
             creation: "R$ 1.200+",
             hosting: "R$ 80+",
-            desc: "Soluções customizadas para grandes redes.",
-            features: ["Custom Bot (Nome/Avatar)", "Integração Web/Database", "Sistemas Exclusivos", "Suporte 24/7 VIP"],
-            target: "Grandes Comunidades"
+            desc: "Soluções sob medida com integração total a bancos de dados.",
+            features: ["Bot 100% Exclusivo (Personalizado)", "Integração Web & Database", "Sistemas de Dashboard", "Suporte VIP TX 24/7"],
+            target: "Grandes Redes & Negócios",
+            variant: "primary" as const
         }
     ];
 
     return (
-        <div className="bg-bg-light dark:bg-bg-dark min-h-screen text-text-primary-light dark:text-text-primary-dark transition-colors duration-300">
+        <div className="bg-bg-dark min-h-screen text-white transition-colors duration-300">
             <Navbar />
-            <main className="py-20 px-4">
-                <div className="max-w-7xl mx-auto text-center mb-16">
+
+            <main className="pt-32 pb-20 px-6">
+                <div className="max-w-7xl mx-auto text-center mb-24">
                     <ScrollReveal>
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#5865F2]/10 border border-[#5865F2]/20 mb-6 mx-auto">
-                            <span className="w-2 h-2 rounded-full bg-[#5865F2] animate-pulse"></span>
-                            <span className="text-[#5865F2] text-xs font-bold uppercase tracking-wide">Bots para Comunidades & Games</span>
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-8 mx-auto">
+                            <span className="size-2 rounded-full bg-accent animate-pulse"></span>
+                            <span className="text-accent text-[10px] font-black uppercase tracking-[0.2em]">Escalabilidade & Performance</span>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-black mb-6">Planos para <span className="text-[#5865F2]">Discord</span></h1>
-                        <p className="text-lg text-slate-500 dark:text-slate-400 max-w-2xl mx-auto">Automação inteligente com custo fixo de criação e mensalidade de hospedagem dedicada na Square Cloud.</p>
+                        <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tighter uppercase">PLANOS <span className="text-gradient">DISCORD.</span></h1>
+                        <p className="text-xl text-slate-400 font-medium max-w-2xl mx-auto italic leading-relaxed">
+                            "Automação de elite com infraestrutura dedicada. Do setup inicial à manutenção contínua em nossos servidores cloud."
+                        </p>
                     </ScrollReveal>
                 </div>
 
                 <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                     {discordPlans.map((plan, idx) => (
                         <ScrollReveal key={idx} delay={idx * 0.1}>
-                            <div className={`p-8 rounded-3xl bg-white dark:bg-white/5 border-2 ${plan.popular ? 'border-[#5865F2] shadow-2xl' : 'border-black/5 dark:border-white/10'} flex flex-col h-full relative`}>
-                                {plan.popular && <span className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#5865F2] text-white text-[10px] font-black px-4 py-1 rounded-full uppercase">Mais Procurado</span>}
-                                <div className="mb-6">
-                                    <h3 className="text-2xl font-bold mb-1">{plan.name}</h3>
-                                    <span className="text-[10px] font-bold text-[#5865F2] uppercase tracking-[0.1em] mb-2 block">{plan.target}</span>
-                                    <p className="text-sm text-slate-500">{plan.desc}</p>
+                            <div className={`p-10 rounded-[3rem] flex flex-col h-full relative transition-all duration-500
+                                ${plan.popular
+                                    ? 'bg-gradient-to-b from-accent/10 to-bg-dark border-2 border-accent/30 shadow-2xl scale-105 z-10'
+                                    : 'glass-effect-dark border-white/5'
+                                }
+                            `}>
+                                {plan.popular && (
+                                    <span className="absolute -top-5 left-1/2 -translate-x-1/2 bg-accent text-white text-[10px] font-black px-6 py-2 rounded-full uppercase tracking-widest shadow-xl">MOST POPULAR</span>
+                                )}
+
+                                <div className="mb-8">
+                                    <h3 className="text-3xl font-black mb-2 uppercase tracking-tight">{plan.name}</h3>
+                                    <span className={`text-[10px] font-black uppercase tracking-[0.2em] mb-4 block
+                                        ${plan.variant === 'primary' ? 'text-primary' : 'text-accent'}
+                                    `}>{plan.target}</span>
+                                    <p className="text-sm text-slate-400 font-medium italic">"{plan.desc}"</p>
                                 </div>
-                                <div className="space-y-4 mb-8 p-4 bg-black/5 dark:bg-white/5 rounded-2xl">
-                                    <div className="flex justify-between items-end">
-                                        <span className="text-xs text-slate-500 font-medium">Criação</span>
-                                        <span className="text-2xl font-black tracking-tight">{plan.creation}</span>
+
+                                <div className="space-y-6 mb-12 p-8 bg-white/5 rounded-[2rem] border border-white/5">
+                                    <div className="flex flex-col gap-1">
+                                        <span className="text-[10px] text-slate-500 font-black uppercase tracking-widest">Setup Setup</span>
+                                        <span className="text-3xl font-black tracking-tighter">{plan.creation}</span>
                                     </div>
-                                    <div className="flex justify-between items-end border-t border-black/5 dark:border-white/10 pt-4">
-                                        <span className="text-xs text-slate-500 font-medium">Hospedagem (Mensal)</span>
-                                        <span className="text-lg font-bold text-[#5865F2]">{plan.hosting}<span className="text-xs font-medium opacity-70">/mês</span></span>
+                                    <div className="h-px w-full bg-white/5"></div>
+                                    <div className="flex flex-col gap-1">
+                                        <span className="text-[10px] text-slate-500 font-black uppercase tracking-widest">Hospedagem VIP</span>
+                                        <span className={`text-xl font-black tracking-tight
+                                            ${plan.variant === 'primary' ? 'text-primary' : 'text-accent'}
+                                        `}>{plan.hosting}<span className="text-xs font-medium opacity-50 uppercase ml-1">/mês</span></span>
                                     </div>
                                 </div>
-                                <ul className="flex-1 space-y-4 mb-8">
+
+                                <ul className="flex-1 space-y-5 mb-12">
                                     {plan.features.map((f, i) => (
-                                        <li key={i} className="flex items-start gap-2 text-xs">
-                                            <span className="material-symbols-outlined text-[#5865F2] text-lg">verified</span>
+                                        <li key={i} className="flex items-start gap-4 text-xs font-bold text-slate-300">
+                                            <span className={`size-2 rounded-full mt-1.5 shrink-0
+                                                ${plan.variant === 'primary' ? 'bg-primary' : 'bg-accent'}
+                                            `}></span>
                                             {f}
                                         </li>
                                     ))}
                                 </ul>
-                                <button
+
+                                <ReflectiveButton
+                                    variant={plan.variant}
+                                    size="lg"
+                                    className="w-full"
                                     onClick={() => openModal(plan.name)}
-                                    className={`w-full py-4 rounded-xl font-black transition-all ${plan.popular ? 'bg-[#5865F2] text-white shadow-lg hover:bg-[#4752C4]' : 'bg-black/5 dark:bg-white/10 text-[#5865F2] dark:text-white'}`}
                                 >
-                                    Contratar para Discord
-                                </button>
+                                    SOLICITAR SETUP
+                                </ReflectiveButton>
                             </div>
                         </ScrollReveal>
                     ))}
                 </div>
             </main>
+
             <Footer />
             <ChatAssistant />
             <LeadModal

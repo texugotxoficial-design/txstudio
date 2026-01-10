@@ -1,25 +1,24 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary-blue: #256af4;
-    --color-primary-green: #0df259;
+    --color-primary: #9333ea;
+    --color-primary-hover: #7e22ce;
+    --color-accent: #db2777;
+    --color-accent-hover: #be185d;
 
     /* Backgrounds */
-    --color-bg-light: #f8fafc;
-    --color-bg-dark: #0f172a;
-    /* Slightly deeper blue for better immersion */
+    --color-bg-light: #fdf4ff;
+    --color-bg-dark: #020617;
 
     /* Surfaces */
     --color-surface-light: #ffffff;
-    --color-surface-dark: #1e293b;
+    --color-surface-dark: #0f172a;
 
     /* Text */
-    --color-text-primary-light: #0f172a;
+    --color-text-primary-light: #1e1b4b;
     --color-text-primary-dark: #f8fafc;
-    --color-text-secondary-light: #475569;
-    /* slate-600 */
-    --color-text-secondary-dark: #cbd5e1;
-    /* slate-300 */
+    --color-text-secondary-light: #6b21a8;
+    --color-text-secondary-dark: #d8b4fe;
 
     --font-display: "Inter", sans-serif;
     --font-sans: "Inter", sans-serif;
@@ -28,6 +27,81 @@
     --radius-lg: 0.75rem;
     --radius-xl: 1rem;
     --radius-2xl: 1.5rem;
+    --radius-3xl: 2rem;
+}
+
+@layer utilities {
+    .glass-effect {
+        @apply bg-white/10 backdrop-blur-xl border border-white/20;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    }
+
+    .glass-effect-dark {
+        @apply bg-black/40 backdrop-blur-xl border border-white/10 relative overflow-hidden;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.4));
+    }
+
+    .glass-effect-dark::after {
+        content: "";
+        @apply absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full;
+        animation: shimmer 10s infinite;
+    }
+
+    @keyframes shimmer {
+        0% {
+            transform: translateX(-100%) rotate(45deg);
+        }
+
+        20%,
+        100% {
+            transform: translateX(100%) rotate(45deg);
+        }
+    }
+
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary;
+        background-size: 200% auto;
+        animation: textGradient 4s linear infinite;
+    }
+
+    .ambient-light {
+        @apply absolute blur-[120px] rounded-full opacity-30 pointer-events-none;
+        animation: float 10s ease-in-out infinite alternate;
+    }
+
+    .glow-soft {
+        @apply shadow-[0_0_30px_-5px_var(--color-primary)];
+    }
+
+    @keyframes float {
+        0% {
+            transform: translate(0, 0) scale(1);
+        }
+
+        50% {
+            transform: translate(5%, 5%) scale(1.1);
+        }
+
+        100% {
+            transform: translate(-5%, 2%) scale(1);
+        }
+    }
+
+    @keyframes textGradient {
+        to {
+            background-position: 200% center;
+        }
+    }
+
+    @keyframes glow {
+        from {
+            box-shadow: 0 0 10px -5px var(--color-primary);
+        }
+
+        to {
+            box-shadow: 0 0 40px 5px var(--color-primary);
+        }
+    }
 }
 
 @layer base {

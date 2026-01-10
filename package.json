@@ -1,14 +1,17 @@
 {
-  "name": "localpro---aplicativos-profissionais",
+  "name": "tx-digital-studio",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node index.js",
+    "postinstall": "npm run build"
   },
   "dependencies": {
+    "express": "^5.2.1",
     "framer-motion": "^12.23.26",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",

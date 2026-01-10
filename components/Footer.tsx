@@ -14,15 +14,9 @@ const Footer: React.FC = () => {
                         <Link to="/" className="flex items-center gap-3 group">
                             <div className="flex items-center justify-center size-14 rounded-2xl bg-gradient-to-br from-primary/20 to-accent/20 text-primary border border-white/10 overflow-hidden group-hover:scale-105 transition-transform duration-500">
                                 <img
-                                    src="/logo_tx.jpg"
+                                    src="https://raw.githubusercontent.com/texugotxoficial-design/txdigitalstudio/main/public-assets/logo_tx.jpg"
                                     alt="Logo TX"
-                                    className="w-full h-full object-cover opacity-80"
-                                    onError={(e) => {
-                                        const target = e.target as HTMLImageElement;
-                                        if (!target.src.includes('raw.githubusercontent.com')) {
-                                            target.src = "https://raw.githubusercontent.com/texugotxoficial-design/txdigitalstudio/main/public-assets/logo_tx.jpg";
-                                        }
-                                    }}
+                                    className="h-full w-auto object-contain"
                                 />
                             </div>
                             <div className="flex flex-col">

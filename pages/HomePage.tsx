@@ -126,15 +126,9 @@ const HomePage: React.FC = () => {
                                             >
                                                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/10 to-bg-dark/95 z-10"></div>
                                                 <img
-                                                    src={item.img}
+                                                    src={`https://raw.githubusercontent.com/texugotxoficial-design/txdigitalstudio/main/public-assets${item.img}`}
                                                     alt={item.title}
-                                                    className="w-full h-full object-cover transition-transform duration-[3000ms] group-hover:scale-125"
-                                                    onError={(e) => {
-                                                        const target = e.target as HTMLImageElement;
-                                                        if (!target.src.includes('raw.githubusercontent.com')) {
-                                                            target.src = `https://raw.githubusercontent.com/texugotxoficial-design/txdigitalstudio/main/public-assets${item.img}`;
-                                                        }
-                                                    }}
+                                                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                                                 />
 
                                                 {/* Card Content */}

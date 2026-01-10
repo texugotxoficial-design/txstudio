@@ -44,15 +44,9 @@ const Navbar: React.FC = () => {
                     <Link to="/" className="flex items-center gap-3 group">
                         <div className="flex items-center justify-center size-12 rounded-xl bg-gradient-to-br from-primary to-accent text-white shadow-lg shadow-primary/30 group-hover:rotate-6 transition-transform overflow-hidden border border-white/20">
                             <img
-                                src="/logo_tx.jpg"
+                                src="https://raw.githubusercontent.com/texugotxoficial-design/txdigitalstudio/main/public-assets/logo_tx.jpg"
                                 alt="Logo TX"
-                                className="w-full h-full object-cover"
-                                onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    if (!target.src.includes('raw.githubusercontent.com')) {
-                                        target.src = "https://raw.githubusercontent.com/texugotxoficial-design/txdigitalstudio/main/public-assets/logo_tx.jpg";
-                                    }
-                                }}
+                                className="h-full w-auto object-contain brightness-100 contrast-125"
                             />
                         </div>
                         <div className="flex flex-col leading-tight">

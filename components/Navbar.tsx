@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
                                 onError={(e) => {
                                     const target = e.target as HTMLImageElement;
                                     if (!target.src.includes('raw.githubusercontent.com')) {
-                                        target.src = "https://raw.githubusercontent.com/texugotxoficial-design/txdigitalstudio/main/public/logo_tx.jpg";
+                                        target.src = "https://raw.githubusercontent.com/texugotxoficial-design/txdigitalstudio/main/public-assets/logo_tx.jpg";
                                     }
                                 }}
                             />

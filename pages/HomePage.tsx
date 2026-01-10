@@ -132,7 +132,7 @@ const HomePage: React.FC = () => {
                                                     onError={(e) => {
                                                         const target = e.target as HTMLImageElement;
                                                         if (!target.src.includes('raw.githubusercontent.com')) {
-                                                            target.src = `https://raw.githubusercontent.com/texugotxoficial-design/txdigitalstudio/main/public${item.img}`;
+                                                            target.src = `https://raw.githubusercontent.com/texugotxoficial-design/txdigitalstudio/main/public-assets${item.img}`;
                                                         }
                                                     }}
                                                 />

@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "dev": "vite",
-    "build": "shx mv template.html index.html && vite build && shx mv index.html template.html && shx cp dist/index.html index.html && shx cp dist/index.html 404.html && shx cp -r dist/assets . && shx cp -r dist/showcase .",
+    "dev": "shx cp template.html index.html && vite",
+    "build": "shx cp template.html index.html && vite build && shx cp dist/index.html index.html && shx cp dist/index.html 404.html && shx cp -r dist/assets . && shx cp -r dist/showcase .",
     "preview": "vite preview",
     "start": "node server.js",
     "postinstall": "npm run build"

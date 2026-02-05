@@ -16,7 +16,7 @@ const WebServicesPage: React.FC = () => {
                 "3 Atualizações Iniciais Grátis",
                 "Setup de Comando Alpha"
             ],
-            buttonLink: "https://wa.me/5500000000000"
+            buttonLink: "https://wa.me/5516991122177"
         },
         {
             title: "Operação Pro",
@@ -29,7 +29,7 @@ const WebServicesPage: React.FC = () => {
                 "3 Atualizações Iniciais Grátis",
                 "Visualização Premium"
             ],
-            buttonLink: "https://wa.me/5500000000000"
+            buttonLink: "https://wa.me/5516991122177"
         },
         {
             title: "Node Administrativo",
@@ -41,7 +41,7 @@ const WebServicesPage: React.FC = () => {
                 "3 Atualizações Iniciais Grátis",
                 "Escala de Shard Ilimitada"
             ],
-            buttonLink: "https://wa.me/5500000000000"
+            buttonLink: "https://wa.me/5516991122177"
         }
     ];
 

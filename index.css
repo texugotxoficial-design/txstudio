@@ -1,130 +1,107 @@
 @import "tailwindcss";
 
 @theme {
-    --color-primary: #9333ea;
-    --color-primary-hover: #7e22ce;
-    --color-accent: #db2777;
-    --color-accent-hover: #be185d;
+    /* Tactical Palette (Yellow / Orange / Cyan) */
+    --color-primary: #DFFF00;
+    --color-secondary: #FF4500;
+    --color-accent: #00F0FF;
 
-    /* Backgrounds */
-    --color-bg-light: #fdf4ff;
-    --color-bg-dark: #020617;
+    --color-dark-bg: #0A0A0A;
+    --color-dark-gray: #1A1A1A;
+    --color-dark-surface: #141414;
 
-    /* Surfaces */
-    --color-surface-light: #ffffff;
-    --color-surface-dark: #0f172a;
+    --font-sans: "Outfit", "Inter", sans-serif;
+    --font-display: "Outfit", sans-serif;
 
-    /* Text */
-    --color-text-primary-light: #1e1b4b;
-    --color-text-primary-dark: #f8fafc;
-    --color-text-secondary-light: #6b21a8;
-    --color-text-secondary-dark: #d8b4fe;
-
-    --font-display: "Inter", sans-serif;
-    --font-sans: "Inter", sans-serif;
-
-    --radius-default: 0.5rem;
-    --radius-lg: 0.75rem;
-    --radius-xl: 1rem;
-    --radius-2xl: 1.5rem;
-    --radius-3xl: 2rem;
-}
-
-@layer utilities {
-    .glass-effect {
-        @apply bg-white/10 backdrop-blur-xl border border-white/20;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    }
-
-    .glass-effect-dark {
-        @apply bg-black/40 backdrop-blur-xl border border-white/10 relative overflow-hidden;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.4));
-        box-shadow: 0 8px 32px 0 rgba(138, 43, 226, 0.2);
-    }
-
-    .premium-glass {
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(20px) saturate(180%);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    }
-
-    .glass-effect-dark::after {
-        content: "";
-        @apply absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full;
-        animation: shimmer 10s infinite;
-    }
-
-    @keyframes shimmer {
-        0% {
-            transform: translateX(-100%) rotate(45deg);
-        }
-
-        20%,
-        100% {
-            transform: translateX(100%) rotate(45deg);
-        }
-    }
-
-    .text-gradient {
-        @apply bg-clip-text text-transparent bg-gradient-to-r from-primary via-accent to-primary;
-        background-size: 200% auto;
-        animation: textGradient 4s linear infinite;
-    }
-
-    .ambient-light {
-        @apply absolute blur-[120px] rounded-full opacity-30 pointer-events-none;
-        animation: float 10s ease-in-out infinite alternate;
-    }
-
-    .glow-soft {
-        @apply shadow-[0_0_30px_-5px_var(--color-primary)];
-    }
-
-    @keyframes float {
-        0% {
-            transform: translate(0, 0) scale(1);
-        }
-
-        50% {
-            transform: translate(5%, 5%) scale(1.1);
-        }
-
-        100% {
-            transform: translate(-5%, 2%) scale(1);
-        }
-    }
-
-    @keyframes textGradient {
-        to {
-            background-position: 200% center;
-        }
-    }
-
-    @keyframes glow {
-        from {
-            box-shadow: 0 0 10px -5px var(--color-primary);
-        }
-
-        to {
-            box-shadow: 0 0 40px 5px var(--color-primary);
-        }
-    }
+    --shadow-tactical-glow: 0 0 20px rgba(223, 255, 0, 0.4);
+    --shadow-neon-orange: 0 0 20px rgba(255, 69, 0, 0.4);
 }
 
 @layer base {
-    html {
-        color-scheme: light dark;
-    }
-
     body {
-        @apply bg-bg-light text-text-primary-light antialiased transition-colors duration-300;
+        @apply bg-dark-bg text-white/90 antialiased overflow-x-hidden;
+        font-family: var(--font-sans);
+        background-image: radial-gradient(#1A1A1A 1px, transparent 1px);
+        background-size: 32px 32px;
     }
 
-    .dark body {
-        @apply bg-bg-dark text-text-primary-dark;
+    a {
+        @apply transition-all duration-300;
     }
 }
 
-/* Custom dark variant support for selector strategy in v4 */
-@custom-variant dark (&:where(.dark, .dark *));
+@layer utilities {
+    .mesh-grid {
+        background-image:
+            linear-gradient(rgba(26, 26, 26, 0.3) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(26, 26, 26, 0.3) 1px, transparent 1px);
+        background-size: 40px 40px;
+    }
+
+    .text-glow {
+        text-shadow: 0 0 10px rgba(223, 255, 0, 0.4);
+    }
+
+    .diagonal-accent {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .diagonal-accent::after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 200%;
+        top: 50%;
+        left: -50%;
+        background: linear-gradient(90deg, #DFFF00, #FF4500);
+        transform: rotate(-35deg);
+        box-shadow: 0 0 15px rgba(223, 255, 0, 0.5);
+        pointer-events: none;
+        z-index: 10;
+    }
+
+    .tactical-card {
+        @apply bg-black/60 backdrop-blur-xl border border-white/5 relative overflow-hidden transition-all duration-500;
+        clip-path: polygon(10% 0, 100% 0, 100% 85%, 90% 100%, 0 100%, 0 15%);
+    }
+
+    .tactical-card:hover {
+        @apply border-primary/40 bg-black/80;
+        transform: translateY(-5px);
+    }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-black;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-primary/30 rounded-full hover:bg-primary transition-colors;
+}
+
+/* Animations */
+@keyframes diagonal-pulse {
+    0% {
+        transform: translate(-100%, -100%) rotate(-35deg);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translate(100%, 100%) rotate(-35deg);
+        opacity: 0;
+    }
+}
+
+.animate-diagonal-pulse {
+    animation: diagonal-pulse 8s linear infinite;
+}

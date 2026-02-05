@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => {
       }
     },
     build: {
-      emptyOutDir: false,
+      emptyOutDir: true,
     }
   };
 });

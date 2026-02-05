@@ -16,7 +16,7 @@ const WebServicesPage: React.FC = () => {
                 "3 Atualizações Iniciais Grátis",
                 "Setup de Comando Alpha"
             ],
-            buttonLink: "https://wa.me/5516991122177"
+            buttonLink: "https://wa.me/5516991122177?text=Olá+TX+Studio!+Estou+interessado+no+plano+*Start+Tático*+e+gostaria+de+iniciar+o+briefing+para+meu+site+de+boas-vindas+e+redes+sociais."
         },
         {
             title: "Operação Pro",
@@ -29,7 +29,7 @@ const WebServicesPage: React.FC = () => {
                 "3 Atualizações Iniciais Grátis",
                 "Visualização Premium"
             ],
-            buttonLink: "https://wa.me/5516991122177"
+            buttonLink: "https://wa.me/5516991122177?text=Olá+TX+Studio!+Gostaria+de+mais+informações+sobre+o+plano+*Operação+Pro*.+Tenho+interesse+em+um+portfólio+high-end+com+cardápio+online."
         },
         {
             title: "Node Administrativo",
@@ -41,7 +41,7 @@ const WebServicesPage: React.FC = () => {
                 "3 Atualizações Iniciais Grátis",
                 "Escala de Shard Ilimitada"
             ],
-            buttonLink: "https://wa.me/5516991122177"
+            buttonLink: "https://wa.me/5516991122177?text=Olá+TX+Studio!+Preciso+de+uma+solução+robusta+de+*Node+Administrativo*.+Podemos+conversar+sobre+a+implantação+de+dashboards+e+sistema+de+agendamento?"
         }
     ];
 

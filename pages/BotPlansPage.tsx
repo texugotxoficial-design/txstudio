@@ -18,7 +18,7 @@ const BotPlansPage: React.FC = () => {
                 "Sistema de Logs Operacionais",
                 "3 Atualizações Iniciais Grátis"
             ],
-            buttonLink: "https://discord.gg/C9pVx4muZG"
+            buttonLink: "https://wa.me/5516991122177?text=Olá+TX+Studio!+Estou+interessado+no+plano+*Início+Tático+(Bronze)*+para+meu+servidor+Discord."
         },
         {
             title: "Incursão Elite (Silver)",
@@ -31,7 +31,7 @@ const BotPlansPage: React.FC = () => {
                 "3 Atualizações Iniciais Grátis",
                 "Prioridade Alpha Sync"
             ],
-            buttonLink: "https://discord.gg/C9pVx4muZG"
+            buttonLink: "https://wa.me/5516991122177?text=Olá+TX+Studio!+Gostaria+de+saber+mais+sobre+o+plano+*Incursão+Elite+(Silver)*+para+bots+e+moderação+avançada."
         },
         {
             title: "Protocolo Fantasma (Gold)",
@@ -43,7 +43,7 @@ const BotPlansPage: React.FC = () => {
                 "3 Atualizações Iniciais Grátis",
                 "Ecossistema Mesh Completo"
             ],
-            buttonLink: "https://discord.gg/C9pVx4muZG"
+            buttonLink: "https://wa.me/5516991122177?text=Olá+TX+Studio!+Preciso+da+potência+do+*Protocolo+Fantasma+(Gold)*.+Poderiam+me+ajudar+com+sistemas+complexos+para+GTARP+e+automação+total?"
         }
     ];
 

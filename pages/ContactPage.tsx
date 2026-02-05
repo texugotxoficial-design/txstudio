@@ -57,7 +57,7 @@ const ContactPage: React.FC = () => {
                         <motion.div
                             whileHover={{ scale: 1.01 }}
                             className="tactical-card p-14 group cursor-pointer border-secondary/20"
-                            onClick={() => window.open('https://wa.me/5516991122177', '_blank')}
+                            onClick={() => window.open('https://wa.me/5516991122177?text=Olá+TX+Studio!+Gostaria+de+iniciar+um+briefing+tático+para+um+novo+projeto.+Poderiam+me+atender?', '_blank')}
                         >
                             <div className="flex items-center justify-between mb-10">
                                 <div className="w-14 h-14 bg-secondary/10 flex items-center justify-center border border-secondary/20 group-hover:bg-secondary/20 transition-all">
